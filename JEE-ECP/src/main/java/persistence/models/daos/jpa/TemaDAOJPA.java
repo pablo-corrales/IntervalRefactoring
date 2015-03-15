@@ -1,46 +1,12 @@
 package persistence.models.daos.jpa;
 
-import java.util.List;
-
-import persistence.jpa.Tema;
 import persistence.models.daos.TemaDAO;
+import persistence.models.entities.Tema;
 
-public class TemaDAOJPA implements TemaDAO {
+public class TemaDAOJPA extends GenericDAOJPA<Tema,Integer>implements TemaDAO {
 
-	@Override
-	public void create(Tema entity) {
-		// TODO Auto-generated method stub
+    public TemaDAOJPA() {
+        super(Tema.class);
+    }
 
-	}
-
-	@Override
-	public Tema read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update(Tema entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Tema entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void deleteByID(Integer id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<Tema> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-}
+ }
