@@ -14,7 +14,10 @@ public class Tema {
     @GeneratedValue
     private Integer id;
     
+    public static final String NOMBRE = "nombre";    
     private String nombre;
+    
+    public static final String PREGUNTA = "pregunta";    
     private String pregunta;
     
 	public Tema() {
