@@ -12,7 +12,7 @@ import persistence.models.daos.VotoDAO;
 
 public class DAOJPAFactory extends DAOFactory {
 	
-    private static final String PERSISTENCE_UNIT = "tictactoe";
+    private static final String PERSISTENCE_UNIT = "Votación";
 
     private static EntityManagerFactory entityManagerFactory = Persistence
             .createEntityManagerFactory(PERSISTENCE_UNIT);
