@@ -1,6 +1,6 @@
 package persistence.models.daos;
 
-import persistence.jpa.Voto;
+import persistence.models.entities.Voto;
 
 public interface VotoDAO extends GenericDAO<Voto, Integer>{
 
