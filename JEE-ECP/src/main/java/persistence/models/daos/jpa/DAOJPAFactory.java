@@ -1,28 +1,28 @@
 package persistence.models.daos.jpa;
 
 
-import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.apache.logging.log4j.LogManager;
+
 import persistence.models.daos.DAOFactory;
-import persistence.models.daos.VotoDAO;
 import persistence.models.daos.TemaDAO;
+import persistence.models.daos.VotoDAO;
 
 public class DAOJPAFactory extends DAOFactory {
+	
     private static final String PERSISTENCE_UNIT = "tictactoe";
 
-    private EntityManager em;
+    private static EntityManagerFactory entityManagerFactory = Persistence
+            .createEntityManagerFactory(PERSISTENCE_UNIT);
 
     public DAOJPAFactory() {
-        this.em = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT).createEntityManager();
+        LogManager.getLogger(DAOJPAFactory.class).debug("create Entity Manager Factory");
     }
 
-    public EntityManager getEm() {
-        if (!em.isOpen()) {
-            this.em = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT)
-                    .createEntityManager();
-        }
-        return em;
+    public static EntityManagerFactory getEntityManagerFactory() {
+        return entityManagerFactory;
     }
 
     @Override
@@ -34,7 +34,5 @@ public class DAOJPAFactory extends DAOFactory {
     public VotoDAO getVotoDAO() {
         return new VotoDAOJPA();
     }
-
-    
 
 }
