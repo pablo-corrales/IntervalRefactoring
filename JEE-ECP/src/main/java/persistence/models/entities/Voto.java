@@ -26,7 +26,7 @@ public class Voto {
 	 public static final String IP = "ip"; 
 	 private String ip;
 	 
-	 
+	 public static final String TEMA = "TEMA_ID";
 	 // Relación unidireccional: 1:0..1
 	 // relación mapeada aqui
 	 // Se aplica cascada
