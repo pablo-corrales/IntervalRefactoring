@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Locale.Category;
-
-import javax.xml.registry.infomodel.User;
-
 import org.apache.logging.log4j.LogManager;
 
 import persistence.models.daos.DAOFactory;
