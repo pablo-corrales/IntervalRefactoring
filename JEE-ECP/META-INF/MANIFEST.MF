@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JEE-ECP
+Bundle-SymbolicName: JEE-ECP
+Bundle-Version: 1.0.0.qualifier
+Export-Package: persistence.models.daos,
+ persistence.models.daos.jpa,
+ persistence.models.daos.jdbc,
+ persistence.models.entities
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
