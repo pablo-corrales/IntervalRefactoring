@@ -1,11 +1,9 @@
 package persistence.models.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class Tema {
@@ -23,16 +21,7 @@ public class Tema {
     public static final String PREGUNTA = "pregunta";    
     private String pregunta;
     
-    public static final String VOTO = "VOTO_ID";
-    // Relación unidireccional: 1:0..1
-    // relación mapeada aqui
-    // Se aplica cascada
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Voto voto;
-    
-    
-    
+        
 	public Tema() {
 	}
 
