@@ -1,10 +1,11 @@
 package persistence.models.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Voto {
@@ -16,21 +17,32 @@ public class Voto {
 	 @GeneratedValue
 	 private Integer id;
 	 
-	 private Integer totalPuntos;
-	 private Integer nivelEstudios;
-	 private String ip;
-	 @ManyToOne
-	 @JoinColumn
-	 private Tema tema;
+	 public static final String PUNTAJE = "puntaje"; 
+	 private Integer puntaje;
 	 
+	 public static final String NIVELESTUDIOS = "nivelestudios"; 
+	 private Integer nivelEstudios;
+	 
+	 public static final String IP = "ip"; 
+	 private String ip;
+	 
+	 
+	 // Relación unidireccional: 1:0..1
+	 // relación mapeada aqui
+	 // Se aplica cascada
+	  @OneToOne(cascade = CascadeType.ALL)
+	  @JoinColumn
+	  private Tema tema;
+	 
+	
+
 	public Voto() {
 	}
 	
-	public Voto(Integer totalPuntos, Integer nivelEstudios, String ip, Tema tema) {
-		this.totalPuntos = totalPuntos;
+	public Voto(Integer puntaje, Integer nivelEstudios, String ip) {
+		this.puntaje = puntaje;
 		this.nivelEstudios = nivelEstudios;
 		this.ip = ip;
-		this.tema = tema;
 	}
 
 	public Integer getId() {
@@ -41,12 +53,12 @@ public class Voto {
 		this.id = id;
 	}
 
-	public Integer getTotalPuntos() {
-		return totalPuntos;
+	public Integer getPuntaje() {
+		return puntaje;
 	}
 
-	public void setTotalPuntos(Integer totalPuntos) {
-		this.totalPuntos = totalPuntos;
+	public void setPuntaje(Integer puntaje) {
+		this.puntaje = puntaje;
 	}
 
 	public Integer getNivelEstudios() {
@@ -64,7 +76,7 @@ public class Voto {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-
+	
 	public Tema getTema() {
 		return tema;
 	}
@@ -72,6 +84,7 @@ public class Voto {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
- 
+
+	 
 	 
 }
