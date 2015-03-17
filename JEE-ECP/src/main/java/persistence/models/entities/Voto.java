@@ -88,5 +88,4 @@ public class Voto {
 		this.tema = tema;
 	}
 	 
-	 
 }
