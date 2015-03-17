@@ -1,6 +1,5 @@
 package persistence.models.daos.jpa;
 
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 

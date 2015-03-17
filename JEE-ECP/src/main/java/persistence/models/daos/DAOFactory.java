@@ -1,5 +1,9 @@
 package persistence.models.daos;
 
+import persistence.models.daos.DAOFactory;
+import persistence.models.daos.TemaDAO;
+import persistence.models.daos.VotoDAO;
+
 public abstract class DAOFactory {
     public static DAOFactory factory = null;
 
