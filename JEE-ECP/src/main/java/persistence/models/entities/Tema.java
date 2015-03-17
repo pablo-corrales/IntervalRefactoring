@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 @Entity
 public class Tema {
 	
-	public static final String TABLE = "user";
+	public static final String TABLE = "Tema";
 
     public static final String ID = "ID";
     
