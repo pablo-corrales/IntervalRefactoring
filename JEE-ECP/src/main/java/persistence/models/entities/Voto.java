@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Voto {
 	
-	public static final String TABLE = "user";
+	public static final String TABLE = "Voto";
 
     public static final String ID = "ID";
     
