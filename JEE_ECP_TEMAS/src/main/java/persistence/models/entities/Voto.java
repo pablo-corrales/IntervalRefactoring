@@ -1,61 +1,72 @@
 package persistence.models.entities;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+import persistence.models.utils.NivelEstudios;
 
 @Entity
+@Table(name = "Voto")
 public class Voto {
-	
+
 	public static final String TABLE = "Voto";
 
-    public static final String ID = "ID";
-    
-	 @Id
-	 @GeneratedValue
-	 private Integer id;
-	 
-	 public static final String PUNTAJE = "puntaje";
-	 private Integer puntaje;
-	 
-	 public static final String NIVELESTUDIOS = "nivelEstudios";
-	 private Integer nivelEstudios;
-	 
-	 public static final String IP = "ip";
-	 private String ip;
-	 
-	 
-	 public static final String TEMA = "TEMA_ID";
-	    // Relación unidireccional: 1:0..1
-	    // relación mapeada aqui
-	    // Se aplica cascada
-	    @OneToOne(cascade = CascadeType.ALL)
-	    @JoinColumn
-	    private Tema tema;
-	 
-	 
-	 
+	public static final String ID = "ID";
+
+	@Id
+	@GeneratedValue
+	@Column(name = "Id")
+	private Integer id;
+
+	public static final String PUNTAJE = "puntaje";
+	@Column(name = "puntaje")
+	@Max(value = 10)
+	@Min(value = 0)
+	private Integer puntaje;
+
+	public static final String NIVELESTUDIOS = "nivelEstudios";
+
+	@Column(name = "nivelEstudios")
+	@Enumerated(EnumType.STRING)
+	private NivelEstudios nivelEstudios;
+
+	public static final String IP = "ip";
+	@Column(name = "ip")
+	private String ip;
+
+	public static final String TEMA = "TEMA_ID";
+	
+	@ManyToOne
+	@JoinColumn(name = TEMA, nullable = false)
+	private Tema tema;
+
 	public Voto() {
 	}
-	
-	public Voto(Integer puntaje, Integer nivelEstudios, String ip) {
+
+	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip) {
 		this.puntaje = puntaje;
 		this.nivelEstudios = nivelEstudios;
 		this.ip = ip;
-		
+
 	}
 
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
-        this.id = id;
-    }
-	
+		this.id = id;
+	}
+
 	public Integer getPuntaje() {
 		return puntaje;
 	}
@@ -64,11 +75,11 @@ public class Voto {
 		this.puntaje = puntaje;
 	}
 
-	public Integer getNivelEstudios() {
+	public NivelEstudios getNivelEstudios() {
 		return nivelEstudios;
 	}
 
-	public void setNivelEstudios(Integer nivelEstudios) {
+	public void setNivelEstudios(NivelEstudios nivelEstudios) {
 		this.nivelEstudios = nivelEstudios;
 	}
 
@@ -87,5 +98,5 @@ public class Voto {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	 
+
 }
