@@ -3,8 +3,10 @@ package persistence.models.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Tema")
 public class Tema {
 	
 	public static final String TABLE = "Tema";
