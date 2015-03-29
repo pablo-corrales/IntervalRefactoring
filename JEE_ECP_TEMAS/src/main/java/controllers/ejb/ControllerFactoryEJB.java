@@ -15,6 +15,7 @@ import controllers.VotarController;
 public class ControllerFactoryEJB extends ControllerFactory {
 
     private AddTemaController addTemaController;
+    private VotarController votarController;
 
     @Override
     public AddTemaController getAddTemaController() {
@@ -23,6 +24,14 @@ public class ControllerFactoryEJB extends ControllerFactory {
         }
         return addTemaController;
     }
+    
+    @Override
+	public VotarController getVotarController() {
+		if (this.votarController == null) {
+            this.votarController = new VotarControllerEJB();
+        }
+        return votarController;
+	}
 
 	@Override
 	public EliminarTemaController getEliminarTemaController() {
@@ -36,10 +45,6 @@ public class ControllerFactoryEJB extends ControllerFactory {
 		return null;
 	}
 
-	@Override
-	public VotarController getVotarController() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
