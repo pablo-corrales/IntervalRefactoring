@@ -1,5 +1,6 @@
 package persistence.models.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -45,7 +46,7 @@ public class Voto {
 
 	public static final String TEMA = "TEMA_ID";
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = TEMA, nullable = false)
 	private Tema tema;
 
