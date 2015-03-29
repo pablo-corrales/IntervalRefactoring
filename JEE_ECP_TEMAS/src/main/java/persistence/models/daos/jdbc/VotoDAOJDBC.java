@@ -12,19 +12,20 @@ import persistence.models.daos.DAOFactory;
 import persistence.models.daos.VotoDAO;
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
+import persistence.models.utils.NivelEstudios;
 
 
 public class VotoDAOJDBC extends GenericDAOJDBC<Voto, Integer> implements VotoDAO {
 
     private Logger log = LogManager.getLogger(VotoDAOJDBC.class);
-
+    
     private Voto create(ResultSet resultSet) {
     	
         Voto voto;
         try {
             if (resultSet != null && resultSet.next()) {
-                voto = new Voto(resultSet.getInt(Voto.PUNTAJE), resultSet.getInt(Voto.NIVELESTUDIOS), resultSet.getString(Voto.IP));
-                        
+                voto = new Voto(resultSet.getInt(Voto.PUNTAJE), NivelEstudios.valueOf(resultSet.getString(Voto.NIVELESTUDIOS)), resultSet.getString(Voto.IP));
+                     
                 voto.setId(resultSet.getInt(Voto.ID));
                 // Reconstruir Tema
                 Integer temaId = resultSet.getInt(Voto.TEMA);
@@ -74,6 +75,7 @@ public class VotoDAOJDBC extends GenericDAOJDBC<Voto, Integer> implements VotoDA
 		
         ResultSet resultSet = this.query(String.format(SQL_SELECT_ID, Voto.TABLE, id));
         return this.create(resultSet);
+        
        
     }
 
@@ -134,15 +136,40 @@ public class VotoDAOJDBC extends GenericDAOJDBC<Voto, Integer> implements VotoDA
             voto = this.create(resultSet);
         }
         return list;
-        
+       
+    }
+    protected static final String SQL_SELECT_TEMA_BY_ID = "SELECT * FROM %s WHERE TEMA_ID=%d";
+
+    
+    public List<Voto> findByTemaId(Integer temaId) {
+		
+    	List<Voto> list = new ArrayList<Voto>();
+    	
+    	ResultSet resultSetVoto = this.query(String.format(SQL_SELECT_TEMA_BY_ID, Voto.TABLE,temaId));
+    	
+    	Voto voto = this.create(resultSetVoto);
+    	
+        while (voto != null) {
+            	list.add(voto);
+            	voto = this.create(resultSetVoto);
+            }
+        return list;
+       
     }
 
+   
 	@Override
 	public void delete(Voto entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	
+	@Override
+	public List<Voto> findVotoByTema(Integer tema_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
