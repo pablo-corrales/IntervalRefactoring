@@ -53,10 +53,11 @@ public class Voto {
 	public Voto() {
 	}
 
-	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip) {
+	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip, Tema tema) {
 		this.puntaje = puntaje;
 		this.nivelEstudios = nivelEstudios;
 		this.ip = ip;
+		this.tema = tema;
 
 	}
 
@@ -99,5 +100,6 @@ public class Voto {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-
+	
+	
 }
