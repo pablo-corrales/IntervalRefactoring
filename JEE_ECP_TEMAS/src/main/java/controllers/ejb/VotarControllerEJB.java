@@ -20,9 +20,10 @@ public class VotarControllerEJB implements VotarController{
 
 	@Override
 	public void votar(Tema tema, Voto voto) {
-		// TODO Auto-generated method stub
-		
-	}
+		 	TemaDAO temaDAO = DAOFactory.getFactory().getTemaDAO();
+	        voto.setTema(temaDAO.read(tema.getId()));
+     
+	 }
 	
 	
 }
