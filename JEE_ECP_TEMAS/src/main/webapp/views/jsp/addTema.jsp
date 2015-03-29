@@ -7,19 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>A&ntilde;adir Tema</title>
 </head>
-<body onload="load()">
-	<c:set var="bean" scope="request" value="${addTemaBean}" />
-	<h2>A&ntilde;adir Tema</h2>
-	<form method="POST" action="/JEE_ECP_TEMAS/jsp/addTema">
-		<label for="id">Identificador: </label> 
-		<input id="id" name="id" type="text" value="${bean.tema.id}" /><br /> 
-		<label for="nombre">Nombre: </label>
-		<input id="nombre" name="nombre" type="text" value="${bean.tema.nombre}" /><br />
-		<label for="pregunta">Pregunta sobre el tema: </label>
-		<input id="pregunta" name="pregunta" type="text" value="${bean.tema.pregunta}" /><br />
-		<br /> <input type="submit" value="A&ntilde;adir tema" />
+<body>
+	<c:set var="rView" scope="request" value="${addTema}"/>
+	<h3>Añadir Tema</h3>
+	
+	<form action="/JEE_ECP_TEMAS/jsp/addTema" method="post">
+		<p>Tema: <input type="text" name="nombre"/>	</p>
+		<p>Pregunta: <input type="text" name="pregunta"/> </p>
+		<input type="submit" value="Anadir tema" />
 	</form>
-
-	<a href="/JEE_ECP_TEMAS/jsp/home">Volver a Inicio</a>
+	<a href="/JEE_ECP_TEMAS/jsp/home">Volver a Home</a>
 </body>
 </html>
