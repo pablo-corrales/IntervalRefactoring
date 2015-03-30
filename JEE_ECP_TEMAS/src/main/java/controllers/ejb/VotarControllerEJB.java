@@ -9,12 +9,11 @@ import persistence.models.daos.VotoDAO;
 import persistence.models.daos.jpa.DAOJPAFactory;
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
-import persistence.models.utils.NivelEstudios;
 
 public class VotarControllerEJB implements VotarController{
 	
 	
-	public void votar(int idTema, NivelEstudios estudios, int puntuacion, String ip){
+	public void votar(Integer idTema, Integer estudios, Integer puntuacion, String ip){
 		DAOFactory.setFactory(new DAOJPAFactory());
         TemaDAO temaDAO = DAOFactory.getFactory().getTemaDAO();
 		Tema tema = temaDAO.read(idTema);
