@@ -27,9 +27,7 @@ public class Dispatcher extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	System.out.println(">>>");
-
-		String action = request.getPathInfo().substring(1);
+    	String action = request.getPathInfo().substring(1);
 
         String view;
         
@@ -39,6 +37,12 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, addTemaBean);
             view = action;
             break;
+        case "votar":
+			VotarBean votarBean = new VotarBean();
+			votarBean.update();
+			request.setAttribute(action, votarBean);
+			view = action;
+			break;
         default:
             view = "home";
         }
@@ -49,22 +53,28 @@ public class Dispatcher extends HttpServlet {
     }
 
     
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	String action = request.getPathInfo().substring(1);
         Tema tema;
         String view="home";
+                
         switch (action) {
         case "addTema":
             tema = new Tema(request.getParameter("nombre"), request.getParameter("pregunta"));
             AddTemaBean addTemaBean = new AddTemaBean(tema);      
             addTemaBean.setControllerFactory(controllerFactory);
             addTemaBean.process();
-            request.setAttribute("addTemaBean", addTemaBean);
-            view = "home";
+            request.setAttribute(action, addTemaBean);
+            view = action;
             break;
+        case "votar":
+        	VotarBean votarBean = new VotarBean();
+			votarBean.update();
+			request.setAttribute(action, votarBean);
+			view = action;
+        	break;
         
         }
 
