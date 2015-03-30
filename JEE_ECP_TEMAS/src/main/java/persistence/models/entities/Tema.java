@@ -28,10 +28,7 @@ public class Tema {
     
     public static final String PREGUNTA = "PREGUNTA";
     private String pregunta;
-    
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Voto> votos;
-    
+      
     
 	public Tema() {
 	}
@@ -72,18 +69,4 @@ public class Tema {
 	}
 	
 	
-	 public List<Voto> getVotos() {
-	        return votos;
-	 }
-
-	   public void setVotos(List<Voto> votos) {
-	        this.votos = votos;
-	   }
-
-	    public void addVoto(Voto voto) {
-	        if (this.votos == null) {
-	            this.votos = new ArrayList<Voto>();
-	        }
-	        this.votos.add(voto);
-	    }
 }
