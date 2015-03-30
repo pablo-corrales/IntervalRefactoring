@@ -12,8 +12,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import persistence.models.utils.NivelEstudios;
-
 @Entity
 @Table(name = "Voto")
 public class Voto {
@@ -35,10 +33,12 @@ public class Voto {
 
 	public static final String NIVELESTUDIOS = "nivelEstudios";
 
+	
+	
 	@Column(name = "nivelEstudios")
 	@Enumerated(EnumType.STRING)
-	private NivelEstudios nivelEstudios;
-
+	private Integer nivelEstudios;
+	
 	public static final String IP = "ip";
 	@Column(name = "ip")
 	private String ip;
@@ -53,14 +53,14 @@ public class Voto {
 	}
 
 	
-	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip) {
+	public Voto(Integer puntaje, Integer nivelEstudios, String ip) {
 		this.puntaje = puntaje;
 		this.nivelEstudios = nivelEstudios;
 		this.ip = ip;
 		
 	}
 	
-	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip, Tema tema) {
+	public Voto(Integer puntaje, Integer nivelEstudios, String ip, Tema tema) {
 		this.puntaje = puntaje;
 		this.nivelEstudios = nivelEstudios;
 		this.ip = ip;
@@ -84,11 +84,11 @@ public class Voto {
 		this.puntaje = puntaje;
 	}
 
-	public NivelEstudios getNivelEstudios() {
+	public Integer getNivelEstudios() {
 		return nivelEstudios;
 	}
 
-	public void setNivelEstudios(NivelEstudios nivelEstudios) {
+	public void setNivelEstudios(Integer nivelEstudios) {
 		this.nivelEstudios = nivelEstudios;
 	}
 
