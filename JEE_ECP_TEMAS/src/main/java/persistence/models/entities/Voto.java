@@ -52,6 +52,14 @@ public class Voto {
 	public Voto() {
 	}
 
+	
+	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip) {
+		this.puntaje = puntaje;
+		this.nivelEstudios = nivelEstudios;
+		this.ip = ip;
+		
+	}
+	
 	public Voto(Integer puntaje, NivelEstudios nivelEstudios, String ip, Tema tema) {
 		this.puntaje = puntaje;
 		this.nivelEstudios = nivelEstudios;
