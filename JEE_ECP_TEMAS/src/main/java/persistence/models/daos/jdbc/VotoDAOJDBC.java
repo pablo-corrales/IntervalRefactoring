@@ -12,7 +12,7 @@ import persistence.models.daos.DAOFactory;
 import persistence.models.daos.VotoDAO;
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
-import persistence.models.utils.NivelEstudios;
+
 
 
 public class VotoDAOJDBC extends GenericDAOJDBC<Voto, Integer> implements VotoDAO {
@@ -24,7 +24,7 @@ public class VotoDAOJDBC extends GenericDAOJDBC<Voto, Integer> implements VotoDA
     	Voto voto;
         try {
             if (resultSet != null && resultSet.next()) {
-                voto = new Voto(resultSet.getInt(Voto.PUNTAJE), NivelEstudios.valueOf(resultSet.getString(Voto.NIVELESTUDIOS)), resultSet.getString(Voto.IP));
+                voto = new Voto(resultSet.getInt(Voto.PUNTAJE), resultSet.getInt(Voto.NIVELESTUDIOS), resultSet.getString(Voto.IP));
                      
                 voto.setId(resultSet.getInt(Voto.ID));
                 // Reconstruir Tema
