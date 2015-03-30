@@ -6,6 +6,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -40,7 +42,12 @@ public class Voto {
 	public static final String IP = "ip";
 	@Column(name = "ip")
 	private String ip;
-
+	
+	public static final String TEMA = "TEMA_ID";
+	
+	@ManyToOne
+	@JoinColumn(name = TEMA, nullable = false)
+	private Tema tema;
 	
 	public Voto() {
 	}
@@ -82,6 +89,14 @@ public class Voto {
 
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+	
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 
 	
