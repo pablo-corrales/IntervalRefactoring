@@ -8,7 +8,10 @@
 </head>
 <body>
 		<h2>Acciones</h2>		
-		<a href="/JEE_ECP_TEMAS/jsp/addTema">A&ntilde;adir Tema</a><br/>
-		
+		<p>
+			<ul>
+				<li><a href="/JEE_ECP_TEMAS/jsp/addTema">A&ntilde;adir Tema</a></li>
+				<li><a href="/JEE_ECP_TEMAS/jsp/votar">Votar</a></li>				
+			</ul>
 </body>
 </html>
