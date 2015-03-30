@@ -11,19 +11,21 @@ import persistence.models.entities.Voto;
 
 public class VotarControllerEJB implements VotarController{
 	
+	
+	@Override
+	public void votar(Tema tema, Voto voto) {
+		DAOFactory.setFactory(new DAOJPAFactory());
+        TemaDAO temaDAO = DAOFactory.getFactory().getTemaDAO();
+        temaDAO.read(tema.getId()).addVoto(voto);
+        temaDAO.update(temaDAO.read(tema.getId()));
+	 }
+	
+	
 	@Override
     public List<Tema> listarTemas() {
         DAOFactory.setFactory(new DAOJPAFactory());
         TemaDAO temaDAO = DAOFactory.getFactory().getTemaDAO();
         return temaDAO.findAll();
     }
-
-	@Override
-	public void votar(Tema tema, Voto voto) {
-		 	TemaDAO temaDAO = DAOFactory.getFactory().getTemaDAO();
-	        voto.setTema(temaDAO.read(tema.getId()));
-     
-	 }
-	
 	
 }
