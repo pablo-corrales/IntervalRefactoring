@@ -39,8 +39,8 @@ public class Dispatcher extends HttpServlet {
             break;
         case "votar":
 			VotarBean votarBean = new VotarBean();
-			votarBean.update();
-			request.setAttribute(action, votarBean);
+			request.setAttribute(action, votarBean);			
+			votarBean.update(request.getRemoteAddr());			
 			view = action;
 			break;
         default:
@@ -71,7 +71,7 @@ public class Dispatcher extends HttpServlet {
             break;
         case "votar":
         	VotarBean votarBean = new VotarBean();
-			votarBean.update();
+			votarBean.update(request.getRemoteAddr());
 			request.setAttribute(action, votarBean);
 			view = action;
         	break;
