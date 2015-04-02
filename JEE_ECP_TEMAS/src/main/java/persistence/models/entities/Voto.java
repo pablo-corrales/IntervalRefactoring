@@ -2,8 +2,8 @@ package persistence.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+//import javax.persistence.EnumType;
+//import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,18 +32,14 @@ public class Voto {
 	private Integer puntaje;
 
 	public static final String NIVELESTUDIOS = "nivelEstudios";
-
-	
-	
 	@Column(name = "nivelEstudios")
-	@Enumerated(EnumType.STRING)
 	private Integer nivelEstudios;
 	
 	public static final String IP = "ip";
 	@Column(name = "ip")
 	private String ip;
 	
-	public static final String TEMA = "TEMA_ID";
+	public static final String TEMA = "TEMA";
 	
 	@ManyToOne
 	@JoinColumn(name = TEMA, nullable = false)
