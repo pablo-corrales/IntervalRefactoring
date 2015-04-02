@@ -11,20 +11,20 @@
 <body>
 	<c:set var="rView" scope="request" value="${votar}"/>
 	
-	
 	<form action="/JEE_ECP_TEMAS/jsp/votar" method="post">
 		<p>Su dirección IP: <input type="text" name="ip" value="${rView.ip}"/>	</p>
 		
-		<input type="hidden" name="id" value="${rView.idTema}"/>
-		<p>Elejir Tema:</p>
+		<p>Eleja un Tema:
 			<select name="idTema" >		
 				<c:forEach var="tema" items="${rView.temas}">
 					<option value="${tema.id}">${tema.nombre}</option>
+					
 				</c:forEach>
+				
 			</select>
-			
-	
-		<input type="hidden" name="id" value="${rView.idTema}"/>
+			<p>Pregunta: <input type="text" name="pregunta" value="${rView.pregunta}"/>	</p>
+					
+				
 		<p>Ingrese su Nivel de Estudios:
 			<select size="${rView.length}" name="estudio">
 				<c:forEach var="estudio" items="${rView.nivelEstudios}">
@@ -39,8 +39,10 @@
 				</c:forEach>
 			</select>
 		</p>
-		<input type="submit" value="Enviar votación" />
+		<br><br>
+		<input type="submit" value="Registrar votación" />
 	</form>
+	<br><br>
 	<a href="/JEE_ECP_TEMAS/jsp/home">Volver a Home</a>
 </body>
 </html>
