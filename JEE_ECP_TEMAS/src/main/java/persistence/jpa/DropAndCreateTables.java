@@ -10,6 +10,7 @@ public class DropAndCreateTables {
 	 DAOJPAFactory.dropAndCreateTables();
 	 EntityManagerFactory em = DAOJPAFactory.getEntityManagerFactory();
 	 em.createEntityManager();
+	
     }
 
 }
