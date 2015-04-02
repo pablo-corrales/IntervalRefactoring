@@ -14,11 +14,11 @@ import persistence.models.entities.Tema;
 
 public class EliminarTemaControllerEJB implements EliminarTemaController{
 	
-	public void eliminarTema(Tema tema){
+	public void eliminarTema(Integer temaID){
 		LogManager.getLogger(GenericDAOJPA.class).debug(">>>borrar tema ");
 		DAOFactory.setFactory(new DAOJPAFactory());
 		TemaDAO temaDAO = DAOFactory.getFactory().getTemaDAO();
-		temaDAO.delete(tema);
+		temaDAO.deleteByID(temaID);
 		
 	}
 
