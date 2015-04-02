@@ -9,6 +9,8 @@ public interface EliminarTemaController {
 	List<Tema> listarTemas();
 	
 	void eliminarTema(Tema tema);
+
+	boolean verificarAutorizacion(String autorizacion);
 	
 
 }
