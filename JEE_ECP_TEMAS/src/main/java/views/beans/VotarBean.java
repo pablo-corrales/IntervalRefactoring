@@ -1,7 +1,6 @@
 package views.beans;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.apache.logging.log4j.LogManager;
+
+import persistence.models.daos.jpa.GenericDAOJPA;
 import persistence.models.entities.Tema;
 import persistence.models.utils.NivelEstudios;
 import controllers.VotarController;
@@ -81,7 +83,7 @@ public class VotarBean extends ViewBean implements Serializable{
 
 	public void setIdTema(Integer idTema) {
 		this.idTema = idTema;
-		this.updateVote();
+		this.updateVote(idTema);
 	}
 
 	public String getPregunta() {
@@ -105,13 +107,13 @@ public class VotarBean extends ViewBean implements Serializable{
     public void update(String ip) {
 		
 		this.temas = votarController.listarTemas();
-        this.temas.add(0, new Tema(-1, "Temas...", ""));
+        this.temas.add(0, new Tema(-1, "Temas...", "Preguntas...."));
         this.idTema = -1;
         this.ip = ip;
-        this.updateVote();
+        this.updateVote(idTema);
     }
 
-	private void updateVote() {
+	public void updateVote(Integer idTema) {
         pregunta = getPregunta(idTema); 
         puntaje = puntuacion[0];
         
@@ -122,10 +124,11 @@ public class VotarBean extends ViewBean implements Serializable{
 			if(idTema==tema.getId())
 				return tema.getPregunta();
 		}
-		return "";
+		return "NO HAY PREGUNTA";
 	}
 	
 	public String process(){
+		 LogManager.getLogger(GenericDAOJPA.class).debug(">>>process votarBean ");
 		VotarController votarController = this.getControllerFactory().getVotarController();
 		ip = this.getIp();
 		List<String> estudiosString = this.getNivelEstudios();
