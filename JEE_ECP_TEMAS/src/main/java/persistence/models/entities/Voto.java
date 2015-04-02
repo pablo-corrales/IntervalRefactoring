@@ -1,6 +1,5 @@
 package persistence.models.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,7 +40,7 @@ public class Voto {
 	public static final String TEMA = "TEMA";
 	
 	
-	@ManyToOne
+	@ManyToOne	
 	@JoinColumn(name = TEMA, nullable = false)
 	private Tema tema;
 	
