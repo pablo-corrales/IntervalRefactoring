@@ -31,7 +31,7 @@ public class DAOJPAFactory extends DAOFactory {
         return entityManagerFactory;
     }
     
-    public void dropAndCreateTables() {
+    public static void dropAndCreateTables() {
         Map<String, String> properties = new HashMap<>();
         properties.put(PersistenceUnitProperties.DDL_GENERATION,
                 PersistenceUnitProperties.DROP_AND_CREATE);
