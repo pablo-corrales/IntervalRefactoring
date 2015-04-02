@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+
+import persistence.models.daos.jpa.GenericDAOJPA;
 import persistence.models.entities.Tema;
 import controllers.ControllerFactory;
 import controllers.ejb.ControllerFactoryEJB;
@@ -30,7 +33,7 @@ public class Dispatcher extends HttpServlet {
     	String action = request.getPathInfo().substring(1);
 
         String view;
-        
+                
         switch (action) {
         case "addTema":
         	AddTemaBean addTemaBean = new AddTemaBean();      	
@@ -38,10 +41,11 @@ public class Dispatcher extends HttpServlet {
             view = action;
             break;
         case "votar":
-			VotarBean votarBean = new VotarBean();
-			request.setAttribute(action, votarBean);			
-			votarBean.update(request.getRemoteAddr());			
+        	VotarBean votarBean = new VotarBean();
+			request.setAttribute(action, votarBean);
+			votarBean.update(request.getRemoteAddr());
 			view = action;
+      
 			break;
         default:
             view = "home";
@@ -59,7 +63,9 @@ public class Dispatcher extends HttpServlet {
     	String action = request.getPathInfo().substring(1);
         Tema tema;
         String view="home";
-                
+        String id;
+        int idTema;
+        LogManager.getLogger(GenericDAOJPA.class).debug(">>>Dispatcher ACTION >>> "+view);
         switch (action) {
         case "addTema":
             tema = new Tema(request.getParameter("nombre"), request.getParameter("pregunta"));
@@ -67,13 +73,18 @@ public class Dispatcher extends HttpServlet {
             addTemaBean.setControllerFactory(controllerFactory);
             addTemaBean.process();
             request.setAttribute(action, addTemaBean);
-            view = action;
             break;
         case "votar":
+        	LogManager.getLogger(GenericDAOJPA.class).debug(">>>Dispatcher action votar ");
         	VotarBean votarBean = new VotarBean();
-			votarBean.update(request.getRemoteAddr());
-			request.setAttribute(action, votarBean);
-			view = action;
+        	votarBean.update(request.getRemoteAddr());
+        	id = request.getParameter("idTema");
+        	idTema = Integer.valueOf(id);	      	
+        	votarBean.setIdTema(idTema);       	
+        	votarBean.setEstudio(request.getParameter("estudio"));
+        	String puntaje = request.getParameter("puntaje");
+        	votarBean.setPuntaje(Integer.valueOf(puntaje));
+        	votarBean.process();
         	break;
         
         }
