@@ -47,13 +47,19 @@ public class Dispatcher extends HttpServlet {
 			view = action;
       
 			break;
-        case "eliminarTema":
-			EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
-			request.setAttribute(action, eliminarTemaBean);
-			eliminarTemaBean.update();
+        case "verificarEliminacion":
+			VerificarEliminacionBean verificarEliminacionBean = new VerificarEliminacionBean();
+			request.setAttribute(action, verificarEliminacionBean);
 			view = action;
 			break;
-        default:
+       case "eliminarTema":
+    	    	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
+    	    	request.setAttribute(action, eliminarTemaBean);
+    	    	eliminarTemaBean.update();
+    	    	view = action;
+    	    	break;
+    	    
+    	 default:
             view = "home";
         }
                             
@@ -91,6 +97,11 @@ public class Dispatcher extends HttpServlet {
         	String puntaje = request.getParameter("puntaje");
         	votarBean.setPuntaje(Integer.valueOf(puntaje));
         	votarBean.process();
+        	break;
+        case "verificarEliminacion":
+        	VerificarEliminacionBean verificarEliminacionBean = new VerificarEliminacionBean();
+        	verificarEliminacionBean.setIdentificador(request.getParameter("identificador"));
+        	view = verificarEliminacionBean.process();
         	break;
         case "eliminarTema":
         	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
