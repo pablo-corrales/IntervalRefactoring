@@ -15,7 +15,7 @@ import persistence.models.entities.Voto;
 
 public class VotarControllerEJB implements VotarController{
 	
-	
+	@Override
 	public void votar(Integer idTema, Integer estudios, Integer puntuacion, String ip){
 		 LogManager.getLogger(GenericDAOJPA.class).debug(">>>votar ");
 		DAOFactory.setFactory(new DAOJPAFactory());
