@@ -1,21 +1,25 @@
 package views.beans;
 
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import persistence.models.entities.Tema;
-
 import persistence.models.utils.NivelEstudios;
 import controllers.VotarController;
 
-public class VotarBean extends ViewBean {
+@ManagedBean
+@ViewScoped
+public class VotarBean extends ViewBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private VotarController votarController = this.getControllerFactory().getVotarController();
+	
 	
 	private List<Tema> temas;
 	private Integer idTema;
@@ -93,21 +97,17 @@ public class VotarBean extends ViewBean {
 	}
 
 	public String getIp() {
-		if(this.ip == null){
-			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			this.ip = req.getHeader("X-FORWARDED-FOR");
-			if( this.ip == null ) {
-			    this.ip = req.getRemoteAddr();
-			}
-		}
+			
 		return this.ip;
 	}
 
 	@PostConstruct
-    public void update() {
+    public void update(String ip) {
+		
 		this.temas = votarController.listarTemas();
         this.temas.add(0, new Tema(-1, "Temas...", ""));
         this.idTema = -1;
+        this.ip = ip;
         this.updateVote();
     }
 
@@ -126,10 +126,11 @@ public class VotarBean extends ViewBean {
 	}
 	
 	public String process(){
+		VotarController votarController = this.getControllerFactory().getVotarController();
 		ip = this.getIp();
 		List<String> estudiosString = this.getNivelEstudios();
 		Integer nivelEstudios = estudiosString.indexOf(this.estudio);
-		this.votarController.votar(idTema, nivelEstudios, puntaje, ip);
+		votarController.votar(idTema, nivelEstudios, puntaje, ip);
 		return "home";
 	}
    
