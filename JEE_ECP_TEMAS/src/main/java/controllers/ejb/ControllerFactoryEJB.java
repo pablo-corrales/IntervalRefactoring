@@ -3,6 +3,9 @@ package controllers.ejb;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
+import org.apache.logging.log4j.LogManager;
+
+import persistence.models.daos.jpa.GenericDAOJPA;
 import controllers.AddTemaController;
 import controllers.ControllerFactory;
 import controllers.EliminarTemaController;
@@ -27,6 +30,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
     
     @Override
 	public VotarController getVotarController() {
+   	 LogManager.getLogger(GenericDAOJPA.class).debug(">>>getvotarcontroller ");
 		if (this.votarController == null) {
             this.votarController = new VotarControllerEJB();
         }
