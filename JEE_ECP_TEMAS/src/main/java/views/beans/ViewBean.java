@@ -1,7 +1,10 @@
 package views.beans;
 
 import java.io.Serializable;
+
 import controllers.ControllerFactory;
+import controllers.ejb.ControllerFactoryEJB;
+
 import javax.faces.bean.ManagedProperty;
 
 public class ViewBean implements Serializable {
@@ -11,10 +14,16 @@ public class ViewBean implements Serializable {
     @ManagedProperty(value = "#{controllerFactoryEJB}")
     private ControllerFactory controllerFactory;
     
+    public ViewBean() {
+   }
+    
     protected ControllerFactory getControllerFactory() {
+    	if(controllerFactory == null)
+    		controllerFactory = new ControllerFactoryEJB();
         return controllerFactory;
     }
 
+    
     public void setControllerFactory(ControllerFactory controllerFactory) {
         this.controllerFactory = controllerFactory;
     }
