@@ -1,8 +1,11 @@
 package persistence.models.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,7 @@ public class Tema {
     
     @Id
     @GeneratedValue
+    @OneToMany(cascade = CascadeType.ALL)
     private Integer id;
     
     public static final String NOMBRE = "NOMBRE";
