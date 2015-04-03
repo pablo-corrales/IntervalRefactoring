@@ -58,9 +58,16 @@ public class Dispatcher extends HttpServlet {
     	    	eliminarTemaBean.update();
     	    	view = action;
     	    	break;
-    	    
+    
+    	 case "consultarVotosPorTema":
+ 	    	ConsultarVotosPorTemaBean consultarVotosPorTemaBean = new ConsultarVotosPorTemaBean();
+ 	    	request.setAttribute(action, consultarVotosPorTemaBean);
+ 	    	consultarVotosPorTemaBean.upate();
+ 	    	view = action;
+ 	    	break;
+ 	    
     	 default:
-            view = "home";
+    		 view = "home";
         }
                             
          this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp").forward(request, response);
