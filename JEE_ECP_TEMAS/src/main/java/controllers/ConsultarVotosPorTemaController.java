@@ -9,6 +9,6 @@ public interface ConsultarVotosPorTemaController {
 
 	List<Tema> listarTemas();
 	
-	List<Voto> ConsultarVotosPorTema(Integer temaID);
+	List<Voto> ConsultarVotosPorTema(Tema tema);
 
 }
