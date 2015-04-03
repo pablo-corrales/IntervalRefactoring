@@ -4,6 +4,7 @@ package views.beans;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,8 +63,9 @@ public class Dispatcher extends HttpServlet {
     	 case "consultarVotosPorTema":
  	    	ConsultarVotosPorTemaBean consultarVotosPorTemaBean = new ConsultarVotosPorTemaBean();
  	    	request.setAttribute(action, consultarVotosPorTemaBean);
- 	    	consultarVotosPorTemaBean.upate();
+ 	    	consultarVotosPorTemaBean.update(request);
  	    	view = action;
+ 	 	
  	    	break;
  	    
     	 default:
@@ -125,6 +127,12 @@ public class Dispatcher extends HttpServlet {
         	eliminarTemaBean.setIdTema(Integer.valueOf(idTemaEliminar));
         	eliminarTemaBean.process();
         	break;
+        case "consultarVotosPorTema":
+ 	    	ConsultarVotosPorTemaBean consultarVotosPorTemaBean = new ConsultarVotosPorTemaBean();
+ 	    	request.setAttribute(action, consultarVotosPorTemaBean);
+ 	       	request.setAttribute("votoTema", consultarVotosPorTemaBean.update(request));
+ 	    	view = action;
+ 	    	break;
         default:
             view = "home";
         
