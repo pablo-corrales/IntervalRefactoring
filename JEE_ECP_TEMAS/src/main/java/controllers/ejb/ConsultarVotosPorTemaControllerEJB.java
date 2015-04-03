@@ -15,11 +15,11 @@ import persistence.models.entities.Voto;
 public class ConsultarVotosPorTemaControllerEJB implements ConsultarVotosPorTemaController{
 	
 	@Override
-	public List<Voto> ConsultarVotosPorTema(Integer temaID){
+	public List<Voto> ConsultarVotosPorTema(Tema tema){
 		
 		DAOFactory.setFactory(new DAOJPAFactory());
 		VotoDAO votoDAO = DAOFactory.getFactory().getVotoDAO();
-		return votoDAO.findVotoByTema(temaID);
+		return votoDAO.findVotoByTema(tema);
 	}
 	
 	@Override
