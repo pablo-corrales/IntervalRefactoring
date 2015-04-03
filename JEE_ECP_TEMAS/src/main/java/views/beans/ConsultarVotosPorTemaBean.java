@@ -66,5 +66,7 @@ public class ConsultarVotosPorTemaBean extends ViewBean implements Serializable{
 		
 
 	}
+	
+	
 
 }
