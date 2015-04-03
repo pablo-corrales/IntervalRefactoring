@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Consulta de Votos por Tema</title>
+<title>Consulta de Media de Votos por Nivel de Estudios</title>
 </head>
 <body>
-	<h3>Consulta de Votos por Tema </h3>
-		<c:set var="rView" scope="request" value="${consultarVotosPorTema}" />
+	<h3>Consulta de Media de Votos por Nivel de Estudios</h3>
+		<c:set var="rView" scope="request" value="${consultarMediaVotosPorEstudios}" />
 	
-			<c:forEach items="${rView.votoTema}" var="vototema">
+			<c:forEach items="${rView.votoEstudios}" var="votoestudios">
     		
-        		 Tema:   ${vototema.key} ------ Votos obtenidos: ${vototema.value}
+        		 Nivel de Estudios:   ${votoestudios.key} ------ Votos Registrados: ${votoestudios.value}
         	<br>
    			</c:forEach>
     		
