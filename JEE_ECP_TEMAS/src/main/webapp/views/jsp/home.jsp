@@ -14,7 +14,7 @@
 				<li><a href="/JEE_ECP_TEMAS/jsp/verificarEliminacion">Eliminar Tema</a></li>
 				<li><a href="/JEE_ECP_TEMAS/jsp/votar">Votar</a></li>	
 				<li><a href="/JEE_ECP_TEMAS/jsp/consultarVotosPorTema">Votos por Tema</a></li>	
-				<li><a href="/JEE_ECP_TEMAS/jsp/consulatarMediaVotosPorEstudios">Media de Votos por Nivel de Estudios</a></li>
+				<li><a href="/JEE_ECP_TEMAS/jsp/consultarMediaVotosPorEstudios">Media de Votos por Nivel de Estudios</a></li>
 			</ul>
 </body>
 </html>
