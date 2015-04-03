@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 
 import persistence.models.daos.jpa.GenericDAOJPA;
 import controllers.AddTemaController;
+import controllers.ConsultarMediaVotosPorEstudiosController;
 import controllers.ConsultarVotosPorTemaController;
 import controllers.ControllerFactory;
 import controllers.EliminarTemaController;
@@ -23,7 +24,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
     private VotarController votarController;
     private EliminarTemaController eliminarTemaController;
     private ConsultarVotosPorTemaController consultarVotosPorTemaController;
-
+    private ConsultarMediaVotosPorEstudiosController consultarMediaVotosPorEstudiosController;
 
     @Override
     public AddTemaController getAddTemaController() {
@@ -62,5 +63,12 @@ public class ControllerFactoryEJB extends ControllerFactory {
 		return consultarVotosPorTemaController;
 	}
 	
+	@Override
+	public ConsultarMediaVotosPorEstudiosController getConsultarMediaVotosPorEstudiosController()
+	{
+		if( consultarMediaVotosPorEstudiosController == null)
+			consultarMediaVotosPorEstudiosController = new ConsultarMediaVotosPorEstudiosControllerEJB();
+		return consultarMediaVotosPorEstudiosController;
+	}
 
 }
