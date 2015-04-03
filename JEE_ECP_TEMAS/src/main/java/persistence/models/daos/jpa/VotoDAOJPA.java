@@ -23,10 +23,10 @@ public class VotoDAOJPA extends GenericDAOJPA<Voto,Integer> implements VotoDAO {
     }
     
   
+
     public List<Voto> findVotoByTema(Integer tema_id) {
     	
-    	 
-        EntityManager entityManager = DAOJPAFactory.getEntityManagerFactory().createEntityManager();
+    	EntityManager entityManager = DAOJPAFactory.getEntityManagerFactory().createEntityManager();
         // Se crea un criterio de consulta
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Voto> criteriaQuery = criteriaBuilder.createQuery(Voto.class);
@@ -47,6 +47,7 @@ public class VotoDAOJPA extends GenericDAOJPA<Voto,Integer> implements VotoDAO {
         List<Voto> result = typedQuery.getResultList();
         entityManager.close();
         return result;
+   
     }
     
     public List<Voto> findVotoByNivelEstudios(Integer nivelEstudios) {
