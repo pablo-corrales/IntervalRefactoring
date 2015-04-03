@@ -45,7 +45,7 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action, votarBean);
 			votarBean.update(request.getRemoteAddr());
 			view = action;
-      
+     
 			break;
         case "verificarEliminacion":
 			VerificarEliminacionBean verificarEliminacionBean = new VerificarEliminacionBean();
@@ -85,6 +85,7 @@ public class Dispatcher extends HttpServlet {
             addTemaBean.setControllerFactory(controllerFactory);
             addTemaBean.process();
             request.setAttribute(action, addTemaBean);
+            view = action;
             break;
         case "votar":
         	LogManager.getLogger(GenericDAOJPA.class).debug(">>>Dispatcher action votar ");
@@ -102,6 +103,14 @@ public class Dispatcher extends HttpServlet {
         	VerificarEliminacionBean verificarEliminacionBean = new VerificarEliminacionBean();
         	verificarEliminacionBean.setIdentificador(request.getParameter("identificador"));
         	view = verificarEliminacionBean.process();
+        	if( view.equals("verificarEliminacion")){
+        		request.setAttribute(view, verificarEliminacionBean);
+        	}
+        	else{
+        		EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
+        		request.setAttribute(view, eliminarTemaBean);
+        		eliminarTemaBean.update(); 
+        	}
         	break;
         case "eliminarTema":
         	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
@@ -109,6 +118,8 @@ public class Dispatcher extends HttpServlet {
         	eliminarTemaBean.setIdTema(Integer.valueOf(idTemaEliminar));
         	eliminarTemaBean.process();
         	break;
+        default:
+            view = "home";
         
         }
 
