@@ -2,11 +2,14 @@ package views.beans;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 import persistence.models.entities.Tema;
 import controllers.AddTemaController;
 
 
 @ManagedBean
+@ViewScoped
 public class AddTemaBean extends ViewBean {
 
     private static final long serialVersionUID = 1L;

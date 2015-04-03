@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>#{msgs.titulo}</title>
+</h:head>
+<h:body> 
+	<h3>#{msgs.verElTema}</h3>
+	<h:form id="verificarEliminacion">
+		<p>#{msgs.codigo}: 
+			<h:inputText id="identificador" value="#{verificarEliminacionBean.identificador}" />
+		</p>
+		<p><h:outputText id="mensajeBorrado" value="#{verificarEliminacionBean.mensajeBorrado}" /></p>
+		
+		<h:commandButton value="#{msgs.verificar}" id="submit" type="submit"  
+		action="#{verificarEliminacionBean.process()}" />
+	</h:form>
+	<h:form>
+		<h:commandLink action="#{i18nBean.change('es')}" value="Español" /> | 
+        <h:commandLink action="#{i18nBean.change('en')}" value="English" />
+	</h:form>
+	<a href="/JEE_ECP_TEMAS/views/jsf/home.xhtml">#{msgs.home}</a>
+</h:body>
+</html>
+
