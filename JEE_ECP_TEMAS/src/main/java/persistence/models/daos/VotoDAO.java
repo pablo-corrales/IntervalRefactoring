@@ -8,7 +8,7 @@ import persistence.models.entities.Voto;
 
 public interface VotoDAO extends GenericDAO<Voto, Integer>{
 	
-	List<Voto> findVotoByTema(Integer temaID);
+	List<Voto> findVotoByTema(Tema tema);
 	void deleteVotoByTemaID(Tema tema);
 
 }
