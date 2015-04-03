@@ -4,15 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 	
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Votacion JSF</title>
-</head>
+<h:head>
+	<title>Votación</title>
+</h:head>
 <body>
 <h:body> 
 	<h3>Votación JSF</h3>
 	<ul>		
-		<li><a href="/JEE_ECP_TEMAS/jsf/eliminarTema.xhtml">#{msgs.menu1}</a></li>
+		<li><a href="/JEE_ECP_TEMAS/views/jsf/addTema.xhtml">#{msgs.addTema}</a></li>
 	</ul>
 	<h:form>
 		<h:commandLink action="#{i18nBean.change('es')}" value="Español" /> | 
