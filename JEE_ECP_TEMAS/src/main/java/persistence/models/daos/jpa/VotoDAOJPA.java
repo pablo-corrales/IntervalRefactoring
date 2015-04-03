@@ -5,11 +5,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.apache.logging.log4j.LogManager;
+
 import persistence.models.daos.VotoDAO;
+import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
 
 public class VotoDAOJPA extends GenericDAOJPA<Voto,Integer> implements VotoDAO {
@@ -70,5 +74,36 @@ public class VotoDAOJPA extends GenericDAOJPA<Voto,Integer> implements VotoDAO {
         entityManager.close();
         return result;
     }
-
+    
+    
+    public void deleteVotoByTemaID(Tema tema) {
+    	EntityManager entityManager = DAOJPAFactory.getEntityManagerFactory().createEntityManager();
+        // Se crea un criterio de consulta
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+   	  
+    	  // create delete
+    	  CriteriaDelete<Voto> delete = criteriaBuilder.createCriteriaDelete(Voto.class);
+    	  
+    	  // set the root class
+    	  Root<Voto> e = delete.from(Voto.class);
+    	  
+    	  // set where clause
+    	  delete.where(criteriaBuilder.equal(e.get("tema"), tema));
+    	  
+    	 
+    	  try {
+              entityManager.getTransaction().begin();
+              // perform update
+        	  entityManager.createQuery(delete).executeUpdate();
+              entityManager.getTransaction().commit();
+            
+          } catch (Exception ex) {
+              LogManager.getLogger(GenericDAOJPA.class).error("delete: " + ex);
+              if (entityManager.getTransaction().isActive())
+                  entityManager.getTransaction().rollback();
+          } finally {
+              entityManager.close();
+         }   
+    }
+    
  }
