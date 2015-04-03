@@ -173,7 +173,7 @@ public class VotoDAOJDBC extends GenericDAOJDBC<Voto, Integer> implements VotoDA
 
 	
 	@Override
-	public List<Voto> findVotoByTema(Integer temaID) {
+	public List<Voto> findVotoByTema(Tema tema) {
 		// TODO Auto-generated method stub
 		return null;
 	}
