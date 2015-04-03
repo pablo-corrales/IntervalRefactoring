@@ -6,5 +6,6 @@ public abstract class ControllerFactory {
 	public abstract VotarController getVotarController();
 	public abstract VerVotacionesController getVerVotacionesController();
 	public abstract EliminarTemaController getEliminarTemaController();
+	public abstract ConsultarVotosPorTemaController getConsultarVotosPorTemaController();
 
 }
