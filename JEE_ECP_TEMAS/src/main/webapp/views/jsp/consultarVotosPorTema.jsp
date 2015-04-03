@@ -9,24 +9,16 @@
 </head>
 <body>
 	<h3>Consulta de Votos por Tema</h3>
-	<c:set var="rView" scope="request" value="${consultaVotosPorTema}" />
-	<p>Temas:</p>
-		<ul>
-			<c:forEach var="tema" items="${rView.temas}">
-				<li>${tema.getNombre()}
-					<table>
-						<tr>
-							<th>Número de votos</th>
-							
-							<c:forEach var="votacion" items="${rView.DatosVotos}">	
-								<td>${votacion}</td>
-							</c:forEach>
-						
-						</tr>	
-					</table>
-				</li>
-			</c:forEach>
-		</ul>
+		<c:set var="rView" scope="request" value="${consultarVotosPorTema}" />
+	
+			<c:forEach items="${rView.votoTema}" var="vototema">
+    		
+        		 Tema:   ${vototema.key} ------ Votos obtenidos: ${vototema.value}
+        	<br>
+   			</c:forEach>
+    		
+    
+			
 		<a href="/JEE_ECP_TEMAS/jsp/home">Volver a Home</a>
 </body>
 </html>
