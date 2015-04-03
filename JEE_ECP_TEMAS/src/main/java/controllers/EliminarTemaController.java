@@ -10,7 +10,4 @@ public interface EliminarTemaController {
 	
 	void eliminarTema(Integer temaID);
 
-	boolean verificarAutorizacion(String autorizacion);
-	
-
 }

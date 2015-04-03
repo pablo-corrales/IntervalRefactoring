@@ -19,6 +19,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
 
     private AddTemaController addTemaController;
     private VotarController votarController;
+    private EliminarTemaController eliminarTemaController;
 
     @Override
     public AddTemaController getAddTemaController() {
@@ -39,8 +40,9 @@ public class ControllerFactoryEJB extends ControllerFactory {
 
 	@Override
 	public EliminarTemaController getEliminarTemaController() {
-		// TODO Auto-generated method stub
-		return null;
+		if( eliminarTemaController == null)
+			eliminarTemaController = new EliminarTemaControllerEJB();
+		return eliminarTemaController;
 	}
 
 	@Override
