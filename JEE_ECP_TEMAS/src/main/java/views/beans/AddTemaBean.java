@@ -10,8 +10,27 @@ import controllers.AddTemaController;
 public class AddTemaBean extends ViewBean {
 
     private static final long serialVersionUID = 1L;
+    private String nombre;
+	private String pregunta;
+	private Tema tema;
+	
+	public String getPregunta() {
+		return pregunta;
+	}
 
-    private Tema tema;
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+    
 
     @PostConstruct
     public void init() {
@@ -23,8 +42,15 @@ public class AddTemaBean extends ViewBean {
 
     public AddTemaBean(Tema tema) {
         this.tema = tema;
+        this.nombre = tema.getNombre();
+        this.pregunta=tema.getPregunta();
     }
 
+    public AddTemaBean(String nombre, String pregunta) {
+        this.nombre=nombre;
+        this.pregunta=pregunta;
+    }
+    
     public Tema getTema() {
         return tema;
     }
@@ -34,9 +60,10 @@ public class AddTemaBean extends ViewBean {
     }
 
     public String process() {
+    	this.setTema(new Tema(this.getNombre(), this.getPregunta()));
         AddTemaController addTemaController = this.getControllerFactory().getAddTemaController();
         addTemaController.addTema(this.getTema());
-        this.setTema(new Tema());
+       
         return null;
     }
 }
