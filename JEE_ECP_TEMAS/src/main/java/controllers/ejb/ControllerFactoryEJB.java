@@ -7,10 +7,12 @@ import org.apache.logging.log4j.LogManager;
 
 import persistence.models.daos.jpa.GenericDAOJPA;
 import controllers.AddTemaController;
+import controllers.ConsultarVotosPorTemaController;
 import controllers.ControllerFactory;
 import controllers.EliminarTemaController;
 import controllers.VerVotacionesController;
 import controllers.VotarController;
+
 
 
 @ManagedBean(name = "controllerFactoryEJB")
@@ -20,6 +22,8 @@ public class ControllerFactoryEJB extends ControllerFactory {
     private AddTemaController addTemaController;
     private VotarController votarController;
     private EliminarTemaController eliminarTemaController;
+    private ConsultarVotosPorTemaController consultarVotosPorTemaController;
+
 
     @Override
     public AddTemaController getAddTemaController() {
@@ -50,7 +54,13 @@ public class ControllerFactoryEJB extends ControllerFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public ConsultarVotosPorTemaController getConsultarVotosPorTemaController() {
+		if( consultarVotosPorTemaController == null)
+			consultarVotosPorTemaController = new ConsultarVotosPorTemaControllerEJB();
+		return consultarVotosPorTemaController;
+	}
 	
 
 }
