@@ -67,7 +67,13 @@ public class Dispatcher extends HttpServlet {
  	    	view = action;
  	 	
  	    	break;
- 	    
+    	 case "consultarMediaVotosPorEstudios":
+  	    	ConsultarMediaVotosPorEstudiosBean consultarMediaVotosPorEstudiosBean = new ConsultarMediaVotosPorEstudiosBean();
+  	    	request.setAttribute(action, consultarMediaVotosPorEstudiosBean);
+  	    	request.setAttribute("mediaEstudios", consultarMediaVotosPorEstudiosBean.update());
+  	    	view = action;
+  	 	
+  	    	break;
     	 default:
     		 view = "home";
         }
@@ -133,6 +139,13 @@ public class Dispatcher extends HttpServlet {
  	       	request.setAttribute("votoTema", consultarVotosPorTemaBean.update(request));
  	    	view = action;
  	    	break;
+        case "consultarMediaVotosPorEstudios":
+  	    	ConsultarMediaVotosPorEstudiosBean consultarMediaVotosPorEstudiosBean = new ConsultarMediaVotosPorEstudiosBean();
+  	    	request.setAttribute(action, consultarMediaVotosPorEstudiosBean);
+  	    	request.setAttribute("mediaEstudios", consultarMediaVotosPorEstudiosBean.update());
+  	    	view = action;
+  	 	
+  	    	break;
         default:
             view = "home";
         
