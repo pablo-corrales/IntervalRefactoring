@@ -14,17 +14,11 @@ public class BothOpenedInterval extends Interval{
 	}
 	
 	public boolean includes(Interval interval) {
-		return minimum.includes(interval.minimum)&&minimum.includes(interval.maximum)&&
- 				maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);
+		return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) &&
+ 				maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
 	}
 	
-	@Override
-	public boolean includedCommon(Interval interval) {
-		return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-			&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
-	}
-	
-	
+		
 	@Override
 	public boolean included(UnOpenedInterval interval) {
 		return includedCommon(interval);

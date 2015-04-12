@@ -20,15 +20,11 @@ package intervals;
 	 				maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
 		}
 		
-				
-		private boolean includedMinimum(Interval interval){
-			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue());
-		}
-		
+			
 		@Override
 		public boolean included(UnOpenedInterval interval) {
-				return (includedMinimum(interval))
-						&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+			return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) && 
+					maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
 		}
 		
 		public boolean intersectsWith(Interval interval) {
