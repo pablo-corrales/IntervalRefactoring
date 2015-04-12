@@ -59,8 +59,7 @@ package intervals;
 				return interval.contained(this); 
 			
 			
-			return this.includes(interval.minimum.getValue())
-					|| this.includes(interval.maximum.getValue());
+			return intersectsCommon(interval);
 		}
 
 		@Override
