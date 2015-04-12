@@ -15,39 +15,38 @@ package intervals;
 		}
 		
 		@Override		
-		public boolean includes(Point value) {
-			
-				return minimum.getValue() < value.getValue() && value.getValue()<= maximum.getValue();
-		
+		public boolean includes(Point value) {	
+				return minimum.getValue() < value.getValue() && value.getValue()<= maximum.getValue();		
 		}
 		
 		@Override
 		public boolean includes(Interval interval) {
 			return interval.included(this);
 		}
-				
 		
+				
+		private boolean includedMinimum(Interval interval){
+			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue());
+		}
 		@Override
 		public boolean included(BothOpenedInterval interval) {
-			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-						&& (interval.includes(maximum.getValue()));
+			return (includedMinimum(interval) && (interval.includes(maximum.getValue())));
 		}
-		
+				
 		@Override
 		public boolean included(LeftOpenedInterval interval) {
-				return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+				return (includedMinimum(interval))
 						&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
 		}
 		
 		@Override
 		public boolean included(RightOpenedInterval interval) {
-				return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-						&& (interval.includes(maximum.getValue()));
+				return (includedMinimum(interval)) && (interval.includes(maximum.getValue()));
 		}
 		
 		@Override
 		public boolean included(UnOpenedInterval interval) {
-				return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+				return (includedMinimum(interval))
 						&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
 		}
 		
