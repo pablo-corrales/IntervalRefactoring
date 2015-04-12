@@ -22,7 +22,12 @@ public abstract class Interval {
 	public abstract boolean includes(Interval interval);
 	public abstract boolean intersectsWith(Interval interval);
 	
-
+	public abstract boolean included(BothOpenedInterval interval);
+	public abstract boolean included(LeftOpenedInterval interval);
+	public abstract boolean included(RightOpenedInterval interval);
+	public abstract boolean included(UnOpenedInterval interval);
+	
+	
 	@Override
 	public String toString() {
 		// TODO
@@ -34,6 +39,5 @@ public abstract class Interval {
 		// TODO
 		return false;
 	}
-
 	
 }

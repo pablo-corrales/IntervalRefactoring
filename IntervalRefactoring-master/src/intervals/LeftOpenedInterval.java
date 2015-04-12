@@ -23,31 +23,34 @@ package intervals;
 		
 		@Override
 		public boolean includes(Interval interval) {
-		
-			boolean minimumIncluded = this.includes(interval.minimum.getValue());
-			boolean maximumIncluded = this.includes(interval.maximum.getValue());
-			
-		
-			switch (interval.opening) {
-			case BOTH_OPENED:
-				return (minimumIncluded || minimum.getValue() == interval.minimum.getValue())
-					&& (maximumIncluded || maximum.getValue() == interval.maximum.getValue());
-			case LEFT_OPENED:
-				return (minimumIncluded || minimum.getValue() == interval.minimum.getValue())
-					&& (maximumIncluded || maximum.getValue() == interval.maximum.getValue());
-			case RIGHT_OPENED:
-				return (minimumIncluded)
-					&& (maximumIncluded || maximum.getValue() == interval.maximum.getValue());
-			case UNOPENED:
-				return (minimumIncluded)
-					&& (maximumIncluded || maximum.getValue() == interval.maximum.getValue());
-			default:
-				assert false;
-				return false;
-			}
-
+			return interval.included(this);
 		}
 				
+		
+		@Override
+		public boolean included(BothOpenedInterval interval) {
+			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+						&& (interval.includes(maximum.getValue()));
+		}
+		
+		@Override
+		public boolean included(LeftOpenedInterval interval) {
+				return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+						&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+		}
+		
+		@Override
+		public boolean included(RightOpenedInterval interval) {
+				return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+						&& (interval.includes(maximum.getValue()));
+		}
+		
+		@Override
+		public boolean included(UnOpenedInterval interval) {
+				return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+						&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+		}
+		
 		public boolean intersectsWith(Interval interval) {
 			if (minimum.getValue() == interval.maximum.getValue()) {
 					return false;
@@ -60,6 +63,9 @@ package intervals;
 			return this.includes(interval.minimum.getValue())
 					|| this.includes(interval.maximum.getValue());
 		}
+		
+		
+		
 		
 }
 

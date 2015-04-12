@@ -22,7 +22,7 @@ public class IntervalFactory {
 	}
 	
 	public static Interval getRigthOpenedInterval(Point minimum, Point maximum, Opening opening) {
-		return new RigthOpenedInterval(minimum, maximum, opening);
+		return new RightOpenedInterval(minimum, maximum, opening);
 	}
 	
 	public static Interval getUnOpenedInterval(Point minimum, Point maximum, Opening opening) {
