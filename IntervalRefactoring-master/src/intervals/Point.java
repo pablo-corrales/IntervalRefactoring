@@ -8,14 +8,6 @@ public abstract class Point {
 		this.value = value;
 	}
 	
-	public abstract boolean esMenorQue(double value);
-	
-	public abstract boolean esMayorQue(double value);
-	
-	public abstract boolean esMenorIgualQue(double value);
-	
-	public abstract boolean esMayorIgualQue(double value);
-
 	public double getValue() {
 		return value;
 	}
