@@ -4,8 +4,8 @@ package intervals;
 	public class LeftOpenedInterval extends Interval{
 		
 		
-		public LeftOpenedInterval(Point minimum, Point maximum, Opening opening) {
-			super(minimum, maximum, opening);
+		public LeftOpenedInterval(Point minimum, Point maximum) {
+			super(minimum, maximum);
 		
 		}
 		
@@ -52,18 +52,28 @@ package intervals;
 		}
 		
 		public boolean intersectsWith(Interval interval) {
-			if (minimum.getValue() == interval.maximum.getValue()) {
+			if (minimum.getValue() == interval.maximum.getValue()) 
 					return false;
-			}
 			
-			if (maximum.getValue() == interval.minimum.getValue()) {
-				return interval.opening == Opening.RIGHT_OPENED ||
-						interval.opening == Opening.UNOPENED;
-			}
+			
+			if (maximum.getValue() == interval.minimum.getValue())
+				return interval.contained(this); 
+			
+			
 			return this.includes(interval.minimum.getValue())
 					|| this.includes(interval.maximum.getValue());
 		}
+
+		@Override
+		public boolean contained(RightOpenedInterval rightOpenedInterval) {			
+			return true;
+		}
 		
+		
+		@Override
+		public boolean containsMinimum(UnOpenedInterval unOpenedinterval){
+				return true;
+		}
 		
 		
 		

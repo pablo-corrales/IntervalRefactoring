@@ -3,8 +3,8 @@ package intervals;
 public class UnOpenedInterval extends Interval{
 	
 	
-	public UnOpenedInterval(Point minimum, Point maximum, Opening opening) {
-		super(minimum, maximum, opening);
+	public UnOpenedInterval(Point minimum, Point maximum) {
+		super(minimum, maximum);
 	
 	}
 		
@@ -53,16 +53,35 @@ public class UnOpenedInterval extends Interval{
 	
 	public boolean intersectsWith(Interval interval) {
 		if (minimum.getValue() == interval.maximum.getValue()) {
-			return interval.opening == Opening.LEFT_OPENED ||
-					interval.opening == Opening.UNOPENED;
+			return interval.containsMinimum(this);
 		}
 		
 		if (maximum.getValue() == interval.minimum.getValue()) {
-			return interval.opening == Opening.RIGHT_OPENED ||
-					interval.opening == Opening.UNOPENED;	
+			return interval.containsMaximum(this);
 		}
 		return this.includes(interval.minimum.getValue())
 				|| this.includes(interval.maximum.getValue());
+	}
+	
+	@Override
+	public boolean contained(RightOpenedInterval rightOpenedInterval) {			
+		return true;
+	}
+	
+	@Override
+	public boolean contained(LeftOpenedInterval leftOpenedInterval) {			
+		return true;
+	}
+
+	
+	@Override
+	public boolean containsMinimum(UnOpenedInterval unOpenedInterval) {
+		return true;
+	}
+	
+	@Override
+	public boolean containsMaximum(UnOpenedInterval unOpenedInterval) {
+		return true;
 	}
 	
 

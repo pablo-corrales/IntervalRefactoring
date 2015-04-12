@@ -4,13 +4,12 @@ public abstract class Interval {
 
 	protected Point minimum;
 	protected Point maximum;
-	protected Opening opening;
 	
-	public Interval(Point minimum, Point maximum, Opening opening) {
+	
+	public Interval(Point minimum, Point maximum) {
 		this.minimum = minimum;
 		this.maximum = maximum;
-		this.opening = opening;
-		
+				
 	}
 
 	public double midPoint() {
@@ -28,6 +27,26 @@ public abstract class Interval {
 	public abstract boolean included(UnOpenedInterval interval);
 	
 	
+	public boolean contained(LeftOpenedInterval leftOpenedInterval){
+		return false;
+	}
+	public boolean contained(RightOpenedInterval rightOpenedInterval){
+		return false;
+	}
+	
+	public boolean contained(UnOpenedInterval interval) {
+		return false;
+	}
+
+	public boolean containsMinimum(UnOpenedInterval unOpenedInterval) {
+		return false;
+	}
+	
+	public boolean containsMaximum(UnOpenedInterval unOpenedInterval) {
+		return false;
+	}
+	
+	
 	@Override
 	public String toString() {
 		// TODO
@@ -39,5 +58,6 @@ public abstract class Interval {
 		// TODO
 		return false;
 	}
+
 	
 }
