@@ -57,10 +57,8 @@ public class BothOpenedInterval extends Interval{
 		if (maximum.getValue() == interval.minimum.getValue()) {
 			return false;	
 		}
-		return this.includes(interval.minimum.getValue())
-				|| this.includes(interval.maximum.getValue());
-	}
-
 		
+		return intersectsCommon(interval);
+	}
 	
 }
