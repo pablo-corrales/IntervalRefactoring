@@ -60,6 +60,8 @@ public class RightOpenedInterval extends Interval{
 			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
 					&& (this.includedMaximum(interval));
 		}
+		
+		
 	
 		@Override
 		public boolean included(UnOpenedInterval interval) {

@@ -61,4 +61,5 @@ public class BothOpenedInterval extends Interval{
 		return intersectsCommon(interval);
 	}
 	
+	
 }
