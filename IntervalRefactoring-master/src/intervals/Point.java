@@ -1,6 +1,6 @@
 package intervals;
 
-public class Point {
+public abstract class Point {
 	
 	protected double value;
 	
@@ -16,6 +16,18 @@ public class Point {
 		this.value = value;
 	}
 	
+	public boolean includes(Point p){
+				return true;
+	}
+			
+	public abstract boolean included(FromPoint fromPoint);	
+	public abstract boolean included(UntilPoint untilPoint);
+			
+	@Override
+	public boolean equals(Object object) {
+		 		Point point = (Point) object;
+		 		return this.getValue() == point.getValue();
+	}
 	
 
 }
