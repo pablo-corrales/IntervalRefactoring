@@ -17,6 +17,7 @@ public abstract class Interval {
 		return (maximum.getValue() + minimum.getValue()) / 2;
 	}
 
+	public abstract boolean includes(double point);
 	public abstract boolean includes(Point point);
 	public abstract boolean includes(Interval interval);
 	public abstract boolean intersectsWith(Interval interval);

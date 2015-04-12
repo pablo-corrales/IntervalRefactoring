@@ -1,6 +1,6 @@
 package intervals;
 
-public abstract class Point {
+public class Point {
 	
 	protected double value;
 	

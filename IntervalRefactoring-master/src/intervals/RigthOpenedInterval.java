@@ -7,7 +7,16 @@ public class RigthOpenedInterval extends Interval{
 		super(minimum, maximum, opening);
 	
 	}
-			
+		
+	
+	@Override
+	public boolean includes(double value) {
+		
+		return minimum.getValue() <= value && value < maximum.getValue();
+
+	}
+	
+	@Override
 	public boolean includes(Point value) {
 		
 			return minimum.getValue() <= value.getValue() && value.getValue()< maximum.getValue();
