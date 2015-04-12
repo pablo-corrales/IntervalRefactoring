@@ -24,28 +24,29 @@ public class BothOpenedInterval extends Interval{
 	}
 	
 	@Override
+	public boolean includedCommon(Interval interval) {
+		return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
+			&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+	}
+	
+	@Override
 	public boolean included(BothOpenedInterval interval) {
-			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-					&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+		return includedCommon(interval);
 		}
 	
 	@Override
 	public boolean included(LeftOpenedInterval interval) {
-		return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-					&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+		return includedCommon(interval);
 		}
 	
 	@Override
 	public boolean included(RightOpenedInterval interval) {
-		return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-					&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+		return includedCommon(interval);
 	}
-	
 
 	@Override
 	public boolean included(UnOpenedInterval interval) {
-			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-					&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
+		return includedCommon(interval);
 	}
 	
 	public boolean intersectsWith(Interval interval) {
