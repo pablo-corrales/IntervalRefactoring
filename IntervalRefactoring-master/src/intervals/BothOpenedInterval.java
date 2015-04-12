@@ -3,7 +3,7 @@ package intervals;
 public class BothOpenedInterval extends Interval{
 	
 	
-	public BothOpenedInterval(Point minimum, Point maximum) {
+	public BothOpenedInterval(FromPoint minimum, UntilPoint maximum) {
 		super(minimum, maximum);
 	
 	}
@@ -13,14 +13,9 @@ public class BothOpenedInterval extends Interval{
 		 return minimum.getValue() < value && value < maximum.getValue();			
 	}
 	
-	@Override
-	public boolean includes(Point value) {		
-			return minimum.getValue() < value.getValue() && value.getValue()< maximum.getValue();			
-	}
-	
-	@Override
 	public boolean includes(Interval interval) {
-		return interval.included(this);
+		return minimum.includes(interval.minimum)&&minimum.includes(interval.maximum)&&
+ 				maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);
 	}
 	
 	@Override
@@ -29,21 +24,7 @@ public class BothOpenedInterval extends Interval{
 			&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
 	}
 	
-	@Override
-	public boolean included(BothOpenedInterval interval) {
-		return includedCommon(interval);
-		}
 	
-	@Override
-	public boolean included(LeftOpenedInterval interval) {
-		return includedCommon(interval);
-		}
-	
-	@Override
-	public boolean included(RightOpenedInterval interval) {
-		return includedCommon(interval);
-	}
-
 	@Override
 	public boolean included(UnOpenedInterval interval) {
 		return includedCommon(interval);

@@ -4,7 +4,7 @@ package intervals;
 	public class LeftOpenedInterval extends Interval{
 		
 		
-		public LeftOpenedInterval(Point minimum, Point maximum) {
+		public LeftOpenedInterval(FromPoint minimum, ExactPoint maximum) {
 			super(minimum, maximum);
 		
 		}
@@ -14,34 +14,15 @@ package intervals;
 			return minimum.getValue() < value && value <= maximum.getValue();	
 		}
 		
-		@Override		
-		public boolean includes(Point value) {	
-				return minimum.getValue() < value.getValue() && value.getValue()<= maximum.getValue();		
-		}
-		
 		@Override
 		public boolean includes(Interval interval) {
-			return interval.included(this);
+			return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) && 
+	 				maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
 		}
 		
 				
 		private boolean includedMinimum(Interval interval){
 			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue());
-		}
-		@Override
-		public boolean included(BothOpenedInterval interval) {
-			return (includedMinimum(interval) && (interval.includes(maximum.getValue())));
-		}
-				
-		@Override
-		public boolean included(LeftOpenedInterval interval) {
-				return (includedMinimum(interval))
-						&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
-		}
-		
-		@Override
-		public boolean included(RightOpenedInterval interval) {
-				return (includedMinimum(interval)) && (interval.includes(maximum.getValue()));
 		}
 		
 		@Override
