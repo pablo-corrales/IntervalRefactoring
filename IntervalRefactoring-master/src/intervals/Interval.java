@@ -19,9 +19,7 @@ public abstract class Interval {
 	public abstract boolean includes(double point);
 	public abstract boolean includes(Interval interval);
 	public abstract boolean intersectsWith(Interval interval);
-	public abstract boolean included(UnOpenedInterval interval);
-	
-	
+		
 	public boolean contained(LeftOpenedInterval leftOpenedInterval){
 		return false;
 	}

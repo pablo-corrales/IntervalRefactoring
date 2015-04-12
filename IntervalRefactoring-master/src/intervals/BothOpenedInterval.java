@@ -19,11 +19,6 @@ public class BothOpenedInterval extends Interval{
 	}
 	
 		
-	@Override
-	public boolean included(UnOpenedInterval interval) {
-		return includedCommon(interval);
-	}
-	
 	public boolean intersectsWith(Interval interval) {
 		if (minimum.getValue() == interval.maximum.getValue()) {
 				return false;

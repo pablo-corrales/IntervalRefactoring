@@ -17,17 +17,11 @@ public class UnOpenedInterval extends Interval{
 	
 		@Override
 	public boolean includes(Interval interval) {
-		return interval.included(this);
+			return minimum.includes(interval.minimum)&&minimum.includes(interval.maximum)&&
+					maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);
 	}
 	
 		
-	@Override
-		public boolean included(UnOpenedInterval interval) {
-			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-					&& (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
-	}
-		
-	
 	public boolean intersectsWith(Interval interval) {
 		if (minimum.getValue() == interval.maximum.getValue()) {
 			return interval.containsMinimum(this);

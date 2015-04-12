@@ -21,12 +21,6 @@ package intervals;
 		}
 		
 			
-		@Override
-		public boolean included(UnOpenedInterval interval) {
-			return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) && 
-					maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
-		}
-		
 		public boolean intersectsWith(Interval interval) {
 			if (minimum.getValue() == interval.maximum.getValue()) 
 					return false;

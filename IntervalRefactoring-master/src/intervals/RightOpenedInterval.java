@@ -34,18 +34,6 @@ public class RightOpenedInterval extends Interval{
 				|| this.includes(interval.maximum.getValue());
 		}
 
-	
-		private boolean includedMaximum(Interval interval){
-			return (interval.includes(maximum.getValue()) || maximum.getValue() == interval.maximum.getValue());
-		}
-
-
-		@Override
-		public boolean included(UnOpenedInterval interval) {
-			return (interval.includes(minimum.getValue()) || minimum.getValue() == interval.minimum.getValue())
-					&& (this.includedMaximum(interval));
-		}
-	
 		@Override
 		public boolean contained(LeftOpenedInterval leftOpenedInterval) {			
 			return true;
