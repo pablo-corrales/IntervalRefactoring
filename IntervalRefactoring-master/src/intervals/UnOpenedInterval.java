@@ -59,8 +59,8 @@ public class UnOpenedInterval extends Interval{
 		if (maximum.getValue() == interval.minimum.getValue()) {
 			return interval.containsMaximum(this);
 		}
-		return this.includes(interval.minimum.getValue())
-				|| this.includes(interval.maximum.getValue());
+		
+		return intersectsCommon(interval);
 	}
 	
 	@Override

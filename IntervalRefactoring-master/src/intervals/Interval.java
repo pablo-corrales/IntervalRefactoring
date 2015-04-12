@@ -46,6 +46,15 @@ public abstract class Interval {
 		return false;
 	}
 	
+	public boolean includedCommon(Interval interval) {	
+		return true;
+	}
+	
+	
+	public boolean intersectsCommon(Interval interval) {
+		return this.includes(interval.minimum.getValue())
+			|| this.includes(interval.maximum.getValue());
+	}
 	
 	@Override
 	public String toString() {
@@ -58,6 +67,8 @@ public abstract class Interval {
 		// TODO
 		return false;
 	}
+
+	
 
 	
 }
