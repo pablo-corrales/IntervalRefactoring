@@ -26,22 +26,22 @@ public class RigthOpenedInterval extends Interval{
 	@Override
 	public boolean includes(Interval interval) {
 	
-		boolean minimumIncluded = this.includes(interval.minimum);
-		boolean maximumIncluded = this.includes(interval.maximum);
+		boolean minimumIncluded = this.includes(interval.minimum.getValue());
+		boolean maximumIncluded = this.includes(interval.maximum.getValue());
 		
 		switch (interval.opening) {
 	
 		case BOTH_OPENED:
-			return (minimumIncluded || minimum == interval.minimum)
-			&& (maximumIncluded || maximum == interval.maximum);
+			return (minimumIncluded || minimum.getValue() == interval.minimum.getValue())
+			&& (maximumIncluded || maximum.getValue() == interval.maximum.getValue());
 		case LEFT_OPENED:
-			return (minimumIncluded || minimum == interval.minimum)
+			return (minimumIncluded || minimum.getValue() == interval.minimum.getValue())
 			&& (maximumIncluded);
 		case RIGHT_OPENED:
-			return (minimumIncluded || minimum == interval.minimum)
-			&& (maximumIncluded || maximum == interval.maximum);
+			return (minimumIncluded || minimum.getValue() == interval.minimum.getValue())
+			&& (maximumIncluded || maximum.getValue() == interval.maximum.getValue());
 		case UNOPENED:
-			return (minimumIncluded || minimum == interval.minimum)
+			return (minimumIncluded || minimum.getValue() == interval.minimum.getValue())
 			&& (maximumIncluded);
 		default:
 			assert false;
@@ -50,16 +50,16 @@ public class RigthOpenedInterval extends Interval{
 	}
 	
 	public boolean intersectsWith(Interval interval) {
-		if (minimum == interval.maximum) {
+		if (minimum.getValue() == interval.maximum.getValue()) {
 			return interval.opening == Opening.LEFT_OPENED ||
 					interval.opening == Opening.UNOPENED;
 		}
 		
-		if (maximum == interval.minimum) {
+		if (maximum.getValue() == interval.minimum.getValue()) {
 			return false;	
 		}
-		return this.includes(interval.minimum)
-				|| this.includes(interval.maximum);
+		return this.includes(interval.minimum.getValue())
+				|| this.includes(interval.maximum.getValue());
 	}
 	
 	
