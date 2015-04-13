@@ -27,14 +27,14 @@ public class RightOpenedInterval extends Interval{
 		return intersectsCommon(interval);
 	}
 
-		@Override
-		public boolean contained(LeftOpenedInterval leftOpenedInterval) {			
-			return true;
-		}
+	public boolean includes(double value) {
+		return (minimum.getValue() < value && value <= maximum.getValue());
+	}
+	
 		
-		@Override
-		public boolean containsMaximum(UnOpenedInterval unOpenedinterval){
+	@Override
+	public boolean containsMaximum(UnOpenedInterval unOpenedinterval){
 				return true;
-		}
+	}
 
 }

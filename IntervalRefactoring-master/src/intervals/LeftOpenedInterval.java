@@ -14,6 +14,10 @@ package intervals;
 					maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);
 		}
 		
+		public boolean includes(double value) {
+			return (minimum.getValue() < value && value <= maximum.getValue());
+		}
+		
 			
 		public boolean intersectsWith(Interval interval) {
 			if (minimum.getValue() == interval.maximum.getValue()) 

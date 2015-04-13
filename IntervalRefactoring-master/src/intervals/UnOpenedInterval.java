@@ -28,6 +28,11 @@ public class UnOpenedInterval extends Interval{
 		return intersectsCommon(interval);
 	}
 	
+	public boolean includes(double value) {
+		return (minimum.getValue() < value && value <= maximum.getValue());
+	}
+	
+	
 	@Override
 	public boolean contained(RightOpenedInterval rightOpenedInterval) {			
 		return true;

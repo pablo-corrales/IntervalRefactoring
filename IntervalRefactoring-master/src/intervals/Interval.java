@@ -45,10 +45,7 @@ public abstract class Interval {
 		return ((minimum.includes(interval.minimum) && maximum.includes(interval.minimum))
 			|| (minimum.includes(interval.maximum) && maximum.includes(interval.maximum)));
 	  }
-	
-	public boolean includes(double value) {
-		return (minimum.getValue() < value && value <= maximum.getValue());
-	}
+	 public abstract boolean includes(double value);
 	
 	@Override
 	public String toString() {
