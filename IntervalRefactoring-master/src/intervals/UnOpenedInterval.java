@@ -31,12 +31,7 @@ public class UnOpenedInterval extends Interval{
 		return true;
 	}
 	
-	@Override
-	public boolean contained(LeftOpenedInterval leftOpenedInterval) {			
-		return true;
-	}
-
-	
+		
 	@Override
 	public boolean containsMinimum(UnOpenedInterval unOpenedInterval) {
 		return true;

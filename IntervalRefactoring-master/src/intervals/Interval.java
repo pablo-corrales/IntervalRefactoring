@@ -17,10 +17,6 @@ public abstract class Interval {
 	}
 
 	
-		
-	public boolean contained(LeftOpenedInterval leftOpenedInterval){
-		return false;
-	}
 	public boolean contained(RightOpenedInterval rightOpenedInterval){
 		return false;
 	}
