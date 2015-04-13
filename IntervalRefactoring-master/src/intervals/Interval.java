@@ -16,8 +16,6 @@ public abstract class Interval {
 		return (maximum.getValue() + minimum.getValue()) / 2;
 	}
 
-	public abstract boolean includes(double point);
-	public abstract boolean includes(Interval interval);
 	public abstract boolean intersectsWith(Interval interval);
 		
 	public boolean contained(LeftOpenedInterval leftOpenedInterval){
@@ -38,15 +36,20 @@ public abstract class Interval {
 	public boolean containsMaximum(UnOpenedInterval unOpenedInterval) {
 		return false;
 	}
+		
 	
-	public boolean includedCommon(Interval interval) {	
-		return true;
+	public boolean includes(Interval interval) {
+		return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) && 
+ 				maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
 	}
 	
+	 public boolean intersectsCommon(Interval interval) {	
+		return ((minimum.includes(interval.minimum) && maximum.includes(interval.minimum))
+			|| (minimum.includes(interval.maximum) && maximum.includes(interval.maximum)));
+	  }
 	
-	public boolean intersectsCommon(Interval interval) {
-		return this.includes(interval.minimum.getValue())
-			|| this.includes(interval.maximum.getValue());
+	public boolean includes(double value) {
+		return (minimum.getValue() < value && value <= maximum.getValue());
 	}
 	
 	@Override

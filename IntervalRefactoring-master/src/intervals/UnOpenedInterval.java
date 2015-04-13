@@ -8,14 +8,8 @@ public class UnOpenedInterval extends Interval{
 	
 	}
 		
-	@Override
-	public boolean includes(double value) {
-		
-		return minimum.getValue() <= value && value <= maximum.getValue();
-
-	}
 	
-		@Override
+	@Override
 	public boolean includes(Interval interval) {
 			return minimum.includes(interval.minimum)&&minimum.includes(interval.maximum)&&
 					maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);

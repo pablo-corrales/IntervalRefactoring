@@ -8,12 +8,12 @@ public class ExactPoint extends Point{
 	
 	@Override
 	public boolean included(FromPoint fromPoint) {
-		return fromPoint.getValue() <= this.getValue();
+		return fromPoint.getValue() < this.getValue();
 	}
 	
 	@Override
 	public boolean included(UntilPoint untilPoint) {
-			return this.getValue() <= untilPoint.getValue();
+			return this.getValue() < untilPoint.getValue();
 	}
 
 }

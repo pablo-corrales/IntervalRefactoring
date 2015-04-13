@@ -26,7 +26,7 @@ public abstract class Point {
 	@Override
 	public boolean equals(Object object) {
 		 		Point point = (Point) object;
-		 		return this.getValue() == point.getValue();
+		 		return point.getValue() == point.getValue();
 	}
 	
 

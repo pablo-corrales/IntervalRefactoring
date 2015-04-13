@@ -10,13 +10,6 @@ public class RightOpenedInterval extends Interval{
 		
 	
 	@Override
-	public boolean includes(double value) {
-		
-		return minimum.getValue() <= value && value < maximum.getValue();
-
-	}
-	
-	@Override
 	public boolean includes(Interval interval) {
 		return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) &&
 				maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
@@ -30,9 +23,9 @@ public class RightOpenedInterval extends Interval{
 		if (maximum.getValue() == interval.minimum.getValue()) {
 			return false;	
 		}
-		return this.includes(interval.minimum.getValue())
-				|| this.includes(interval.maximum.getValue());
-		}
+		
+		return intersectsCommon(interval);
+	}
 
 		@Override
 		public boolean contained(LeftOpenedInterval leftOpenedInterval) {			
