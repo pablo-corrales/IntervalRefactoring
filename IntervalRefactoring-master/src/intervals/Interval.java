@@ -38,14 +38,19 @@ public abstract class Interval {
 	}
 		
 	public abstract boolean intersectsWith(Interval interval);
+	public abstract boolean includes(double value);
 	
-	public abstract boolean includes(Interval interval);
-	
-	 public boolean intersectsCommon(Interval interval) {	
+	public boolean includes(Interval interval) {
+		return minimum.includes(interval.minimum)&&minimum.includes(interval.maximum)&&
+				maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);
+	}
+			
+	public boolean intersectsCommon(Interval interval) {	
 		return ((minimum.includes(interval.minimum) && maximum.includes(interval.minimum))
 			|| (minimum.includes(interval.maximum) && maximum.includes(interval.maximum)));
-	  }
-	 public abstract boolean includes(double value);
+	 }
+	
+	
 	
 	@Override
 	public String toString() {
