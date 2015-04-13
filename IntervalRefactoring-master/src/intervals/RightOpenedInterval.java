@@ -7,19 +7,10 @@ public class RightOpenedInterval extends Interval{
 		super(minimum, maximum);
 	
 	}
-		
-	
-		
+			
 	public boolean intersectsWith(Interval interval) {
-		if (minimum.getValue() == interval.maximum.getValue()) {
-			return interval.contained(this);
-		}
-		
-		if (maximum.getValue() == interval.minimum.getValue()) {
-			return false;	
-		}
-		
-		return intersectsCommon(interval);
+		return (minimum.intersectsWith(interval.minimum)&&maximum.intersectsWith(interval.minimum))
+				|| (minimum.intersectsWith(interval.maximum)&&maximum.intersectsWith(interval.maximum));
 	}
 
 	public boolean includes(double value) {
