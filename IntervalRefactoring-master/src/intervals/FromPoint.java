@@ -10,7 +10,12 @@ public class FromPoint extends Point {
 	public boolean includes(Point point){
 			return point.included(this);
 	}
-			
+	
+	@Override
+	public boolean intersectsWith(Point point) {
+		return this.getValue() < point.getValue();
+	}
+	
 	@Override
 	public boolean included(FromPoint fromPoint) {
 				return fromPoint.getValue() <= this.getValue();

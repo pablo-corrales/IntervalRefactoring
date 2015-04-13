@@ -12,6 +12,11 @@ public class UntilPoint extends Point{
 	}
 	
 	@Override
+	public boolean intersectsWith(Point point) {
+			return point.getValue() < this.getValue();
+	}
+	
+	@Override
 	public boolean included(FromPoint fromPoint) {
 			return fromPoint.getValue() < this.getValue();
 	}

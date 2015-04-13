@@ -17,6 +17,12 @@ public class ExactPoint extends Point{
  	}
 	
 	@Override
+	public boolean intersectsWith(Point point) {
+			return false;
+	}
+	
+	
+	@Override
 	public boolean included(FromPoint fromPoint) {
 		return fromPoint.getValue() < this.getValue();
 	}
