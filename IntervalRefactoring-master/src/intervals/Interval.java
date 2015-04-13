@@ -16,23 +16,6 @@ public abstract class Interval {
 		return (maximum.getValue() + minimum.getValue()) / 2;
 	}
 
-	
-	public boolean contained(RightOpenedInterval rightOpenedInterval){
-		return false;
-	}
-	
-	public boolean contained(UnOpenedInterval interval) {
-		return false;
-	}
-
-	public boolean containsMinimum(UnOpenedInterval unOpenedInterval) {
-		return false;
-	}
-	
-	public boolean containsMaximum(UnOpenedInterval unOpenedInterval) {
-		return false;
-	}
-		
 	public abstract boolean intersectsWith(Interval interval);
 	public abstract boolean includes(double value);
 	
@@ -41,12 +24,6 @@ public abstract class Interval {
 				maximum.includes(interval.minimum)&&maximum.includes(interval.maximum);
 	}
 			
-	public boolean intersectsCommon(Interval interval) {	
-		return ((minimum.includes(interval.minimum) && maximum.includes(interval.minimum))
-			|| (minimum.includes(interval.maximum) && maximum.includes(interval.maximum)));
-	 }
-	
-	
 	
 	@Override
 	public String toString() {

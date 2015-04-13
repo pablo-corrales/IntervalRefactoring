@@ -19,21 +19,5 @@ public class UnOpenedInterval extends Interval{
 	}
 	
 	
-	@Override
-	public boolean contained(RightOpenedInterval rightOpenedInterval) {			
-		return true;
-	}
-	
-		
-	@Override
-	public boolean containsMinimum(UnOpenedInterval unOpenedInterval) {
-		return true;
-	}
-	
-	@Override
-	public boolean containsMaximum(UnOpenedInterval unOpenedInterval) {
-		return true;
-	}
-	
 
 }

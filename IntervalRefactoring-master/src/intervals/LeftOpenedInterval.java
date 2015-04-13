@@ -20,19 +20,7 @@ package intervals;
 					|| (minimum.intersectsWith(interval.maximum)&&maximum.intersectsWith(interval.maximum));
 		}
 
-		@Override
-		public boolean contained(RightOpenedInterval rightOpenedInterval) {			
-			return true;
-		}
-		
-		
-		@Override
-		public boolean containsMinimum(UnOpenedInterval unOpenedinterval){
-				return true;
-		}
-		
-		
-		
+				
 }
 
 

@@ -18,9 +18,4 @@ public class RightOpenedInterval extends Interval{
 	}
 	
 		
-	@Override
-	public boolean containsMaximum(UnOpenedInterval unOpenedinterval){
-				return true;
-	}
-
 }
