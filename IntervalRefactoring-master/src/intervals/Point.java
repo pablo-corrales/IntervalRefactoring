@@ -29,6 +29,7 @@ public abstract class Point {
 	public abstract boolean included(UntilPoint untilPoint);
 	
 	public abstract boolean intersectsWith(Point point);
+	public abstract boolean contained(ExactPoint p);
 			
 	@Override
 	public boolean equals(Object object) {

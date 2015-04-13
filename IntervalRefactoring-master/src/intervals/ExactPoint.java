@@ -18,9 +18,16 @@ public class ExactPoint extends Point{
 	
 	@Override
 	public boolean intersectsWith(Point point) {
-			return false;
+		return point.contained(this);
 	}
 	
+	@Override
+	public boolean contained(ExactPoint point) {
+			if( point.getTypePoint().equals(TypePoint.MAXIMUM))
+				return point.getValue() >= this.getValue();
+			else
+				return point.getValue() <= this.getValue();
+	 }
 	
 	@Override
 	public boolean included(FromPoint fromPoint) {

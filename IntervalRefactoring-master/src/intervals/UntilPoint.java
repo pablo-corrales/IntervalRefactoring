@@ -17,6 +17,14 @@ public class UntilPoint extends Point{
 	}
 	
 	@Override
+	public boolean contained(ExactPoint point) {
+			if( point.getTypePoint().equals(TypePoint.MAXIMUM))
+				return point.getValue() > this.getValue();
+			else
+				return point.getValue() < this.getValue();
+	}
+	
+	@Override
 	public boolean included(FromPoint fromPoint) {
 			return fromPoint.getValue() < this.getValue();
 	}
