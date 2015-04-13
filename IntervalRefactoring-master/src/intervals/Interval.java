@@ -1,6 +1,6 @@
 package intervals;
 
-public abstract class Interval {
+public class Interval {
 
 	protected Point minimum;
 	protected Point maximum;
@@ -16,7 +16,10 @@ public abstract class Interval {
 		return (maximum.getValue() + minimum.getValue()) / 2;
 	}
 
-	public abstract boolean intersectsWith(Interval interval);
+	public boolean intersectsWith(Interval interval) {
+		return (minimum.intersectsWith(interval.minimum)&&maximum.intersectsWith(interval.minimum))
+				|| (minimum.intersectsWith(interval.maximum)&&maximum.intersectsWith(interval.maximum));
+	}
 		
 	public boolean includes(double value) {
 			return minimum.getValue() < value && value < maximum.getValue();
