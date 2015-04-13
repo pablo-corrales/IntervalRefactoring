@@ -16,10 +16,15 @@ public abstract class Point {
 		this.value = value;
 	}
 	
-	public boolean includes(Point p){
-				return true;
+	public abstract boolean includes(Point p);
+	
+	public boolean included(ExactPoint p) {
+				if( p.getTypePoint().equals(TypePoint.MAXIMUM))
+					return p.getValue() >= this.getValue();
+				else
+					return p.getValue() <= this.getValue();
 	}
-			
+	
 	public abstract boolean included(FromPoint fromPoint);	
 	public abstract boolean included(UntilPoint untilPoint);
 			

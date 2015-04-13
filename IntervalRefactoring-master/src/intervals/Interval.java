@@ -16,7 +16,7 @@ public abstract class Interval {
 		return (maximum.getValue() + minimum.getValue()) / 2;
 	}
 
-	public abstract boolean intersectsWith(Interval interval);
+	
 		
 	public boolean contained(LeftOpenedInterval leftOpenedInterval){
 		return false;
@@ -37,11 +37,9 @@ public abstract class Interval {
 		return false;
 	}
 		
+	public abstract boolean intersectsWith(Interval interval);
 	
-	public boolean includes(Interval interval) {
-		return minimum.includes(interval.minimum) && minimum.includes(interval.maximum) && 
- 				maximum.includes(interval.minimum) && maximum.includes(interval.maximum);
-	}
+	public abstract boolean includes(Interval interval);
 	
 	 public boolean intersectsCommon(Interval interval) {	
 		return ((minimum.includes(interval.minimum) && maximum.includes(interval.minimum))
