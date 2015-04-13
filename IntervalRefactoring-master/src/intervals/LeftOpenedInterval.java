@@ -16,15 +16,8 @@ package intervals;
 		
 			
 		public boolean intersectsWith(Interval interval) {
-			if (minimum.getValue() == interval.maximum.getValue()) 
-					return false;
-			
-			
-			if (maximum.getValue() == interval.minimum.getValue())
-				return interval.contained(this); 
-			
-			
-			return intersectsCommon(interval);
+			return (minimum.intersectsWith(interval.minimum)&&maximum.intersectsWith(interval.minimum))
+					|| (minimum.intersectsWith(interval.maximum)&&maximum.intersectsWith(interval.maximum));
 		}
 
 		@Override

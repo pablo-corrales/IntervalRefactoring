@@ -12,15 +12,8 @@ public class BothOpenedInterval extends Interval{
 	}
 		
 	public boolean intersectsWith(Interval interval) {
-		if (minimum.getValue() == interval.maximum.getValue()) {
-				return false;
-		}
-		
-		if (maximum.getValue() == interval.minimum.getValue()) {
-			return false;	
-		}
-		
-		return intersectsCommon(interval);
+		return (minimum.intersectsWith(interval.minimum)&&maximum.intersectsWith(interval.minimum))
+				|| (minimum.intersectsWith(interval.maximum)&&maximum.intersectsWith(interval.maximum));
 		
 		
 	}
