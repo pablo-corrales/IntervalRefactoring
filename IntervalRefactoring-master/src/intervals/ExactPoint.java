@@ -40,4 +40,12 @@ public class ExactPoint extends Point{
 	}
 	
 	
+	@Override
+	public String toString(){
+			if( this.getTypePoint().equals(TypePoint.MAXIMUM))
+				return this.getValue() + "]";
+			else
+				return this.getValue() + "[";
+	}
+	
 }

@@ -27,14 +27,13 @@ public abstract class Interval {
 	
 	@Override
 	public String toString() {
-		// TODO
-		return null;
+		return "{"+this.minimum.toString() + ", " + this.maximum.toString()+"}";
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO
-		return false;
+		Interval interval = (Interval) object;
+		return this.minimum.equals(interval.minimum) && this.maximum.equals(interval.maximum);
 	}
 
 	

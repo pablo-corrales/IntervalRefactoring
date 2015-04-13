@@ -33,4 +33,9 @@ public class UntilPoint extends Point{
 	public boolean included(UntilPoint untilPoint) {
 			return this.getValue() <= untilPoint.getValue();
 	}
+	
+	@Override
+	public String toString() {
+			return this.getValue() + ")";
+	}
 }
