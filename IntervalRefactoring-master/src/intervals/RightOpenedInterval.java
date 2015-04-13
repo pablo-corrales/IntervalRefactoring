@@ -13,9 +13,5 @@ public class RightOpenedInterval extends Interval{
 				|| (minimum.intersectsWith(interval.maximum)&&maximum.intersectsWith(interval.maximum));
 	}
 
-	public boolean includes(double value) {
-		return (minimum.getValue() < value && value <= maximum.getValue());
-	}
-	
-		
+			
 }

@@ -9,11 +9,6 @@ package intervals;
 		
 		}
 		
-		
-		public boolean includes(double value) {
-			return (minimum.getValue() < value && value <= maximum.getValue());
-		}
-		
 			
 		public boolean intersectsWith(Interval interval) {
 			return (minimum.intersectsWith(interval.minimum)&&maximum.intersectsWith(interval.minimum))
