@@ -1,6 +1,6 @@
 package intervals;
 
-public class ExactPoint extends Point{
+public abstract class ExactPoint extends Point{
 	private TypePoint typePoint;
 	
 	public ExactPoint(double number, TypePoint typePoint) {
@@ -16,18 +16,15 @@ public class ExactPoint extends Point{
 		return point.included(this);
  	}
 	
-	@Override
-	public boolean intersectsWith(Point point) {
-		return point.contained(this);
+	public abstract boolean intersectsWith(Point point);
+	
+	public boolean contained(From_ExactPoint point) {
+			return point.getValue() <= this.getValue();
 	}
 	
-	@Override
-	public boolean contained(ExactPoint point) {
-			if( point.getTypePoint().equals(TypePoint.MAXIMUM))
-				return point.getValue() >= this.getValue();
-			else
-				return point.getValue() <= this.getValue();
-	 }
+	public boolean contained(Until_ExactPoint p) {
+			return p.getValue() >= this.getValue();
+	}
 	
 	@Override
 	public boolean included(FromPoint fromPoint) {

@@ -17,11 +17,13 @@ public class FromPoint extends Point {
 	}
 	
 	@Override
-	public boolean contained(ExactPoint point) {
-			if( point.getTypePoint().equals(TypePoint.MAXIMUM))
-				return point.getValue() > this.getValue();
-			else
-				return point.getValue() < this.getValue();
+	public boolean contained(From_ExactPoint p) {
+				return p.getValue() < this.getValue();
+	}
+	
+	@Override
+	public boolean contained(Until_ExactPoint p) {
+			return p.getValue() > this.getValue();
 	}
 	
 	@Override
