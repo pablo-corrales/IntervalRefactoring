@@ -2,8 +2,8 @@ package intervals;
 
 public class From_ExactPoint extends ExactPoint{
 
-	public From_ExactPoint(double number, TypePoint typePoint) {
-		super(number, typePoint);
+	public From_ExactPoint(double number) {
+		super(number);
 		
 	}
 	

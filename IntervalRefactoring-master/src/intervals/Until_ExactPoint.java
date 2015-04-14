@@ -2,8 +2,8 @@ package intervals;
 
 public class Until_ExactPoint extends ExactPoint{
 
-	public Until_ExactPoint(double number, TypePoint typePoint) {
-		super(number, typePoint);
+	public Until_ExactPoint(double number) {
+		super(number);
 		
 	}
 	
