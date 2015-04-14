@@ -11,5 +11,9 @@ public class Until_ExactPoint extends ExactPoint{
 	public boolean intersectsWith(Point point) {
 			return point.contained(this);
 	}
+	
+	public boolean includes(Point point){
+		return point.included(this);
+	}
 
 }

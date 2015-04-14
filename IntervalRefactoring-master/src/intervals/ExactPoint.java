@@ -12,9 +12,7 @@ public abstract class ExactPoint extends Point{
 		return typePoint;
 	}
 
-	public boolean includes(Point point){
-		return point.included(this);
- 	}
+	public abstract boolean includes(Point p);
 	
 	public abstract boolean intersectsWith(Point point);
 	
