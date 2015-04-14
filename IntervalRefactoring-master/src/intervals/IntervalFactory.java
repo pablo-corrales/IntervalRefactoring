@@ -14,18 +14,18 @@ public class IntervalFactory {
 	}
 	
 	public static Interval getBothOpenedInterval(FromPoint minimum, UntilPoint maximum) {
-				return new BothOpenedInterval(minimum, maximum);
+				return new Interval(minimum, maximum);
 	}
 	
 	public static Interval getLeftOpenedInterval(FromPoint minimum, ExactPoint maximum) {
-		return new LeftOpenedInterval(minimum, maximum);
+		return new Interval(minimum, maximum);
 	}
 	
 	public static Interval getRigthOpenedInterval(ExactPoint minimum, UntilPoint maximum) {
-		return new RightOpenedInterval(minimum, maximum);
+		return new Interval(minimum, maximum);
 	}
 	
 	public static Interval getUnOpenedInterval(ExactPoint minimum, ExactPoint maximum) {
-		return new UnOpenedInterval(minimum, maximum);
+		return new Interval(minimum, maximum);
 	}
 }
