@@ -13,10 +13,12 @@ public abstract class ExactPoint extends Point{
 	
 	public abstract boolean intersectsWith(Point point);
 	
+	@Override
 	public boolean contained(From_ExactPoint point) {
 			return point.getValue() <= this.getValue();
 	}
 	
+	@Override
 	public boolean contained(Until_ExactPoint p) {
 			return p.getValue() >= this.getValue();
 	}

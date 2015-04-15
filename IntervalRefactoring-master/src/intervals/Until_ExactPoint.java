@@ -12,8 +12,14 @@ public class Until_ExactPoint extends ExactPoint{
 			return point.contained(this);
 	}
 	
+	@Override
 	public boolean includes(Point point){
 		return point.included(this);
+	}
+	
+	@Override
+	public String toString(){
+			return this.getValue() + "]";
 	}
 
 }

@@ -4,7 +4,7 @@ public class UntilPoint extends Point{
 	
 	public UntilPoint(double value) {
 		super(value);
-	};
+	}
 	
 	
 	public boolean includes(Point point){
