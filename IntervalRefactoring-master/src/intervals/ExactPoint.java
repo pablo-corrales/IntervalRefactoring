@@ -11,7 +11,8 @@ public abstract class ExactPoint extends Point{
 	
 	public abstract boolean includes(Point p);
 	
-	public abstract boolean intersectsWith(Point point);
+	@Override
+ 	public abstract boolean intersectsWith(Point point);
 	
 	@Override
 	public boolean contained(From_ExactPoint point) {
